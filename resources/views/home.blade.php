@@ -8,8 +8,14 @@
           <div class="col-md-6 mt-3">
            <div class="card">
             <div class="row">
-              <div class="col-md-1"> <a href="{{Route('myprofile',$blog->author )}}"> <img src="/storage/profile/{{$blog->poto_profile()}}" alt="" class="rounded-circle pt-1 pl-1 pb-1" width="200%;"></div> <p class="pt-2 pl-2 h5">{{$blog->author}}</a></p>
-                  </div>
+
+                 @if ($blog->poto_profile() === 'default.png')
+              <div class="col-md-1"> <a href="{{Route('myprofile',$blog->author )}}"> <img src="/storage/profile/{{$blog->poto_profile()}}" alt="" class="rounded-circle pt-1 pl-1 pb-1" width="200%;"></div> <p class="pt-2 pl-2 h5">{{$blog->author}}</a></p> </div>
+
+                    @else
+              <div class="col-md-1"> <a href="{{Route('myprofile',$blog->author )}}"> <img src="{{$blog->poto_profile()}}" alt="" class="rounded-circle pt-1 pl-1 pb-1" width="200%;"></div> <p class="pt-2 pl-2 h5">{{$blog->author}}</a></p> </div>
+                    @endif
+           
            <a href="{{Route('details',$blog->slug)}}">
               
              <img src="/storage/img/{{$blog->thumbnail}}" alt="" width="100%;">

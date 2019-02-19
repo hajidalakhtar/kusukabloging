@@ -42,12 +42,17 @@ class AuthController extends Controller
             return $authUser;
         }
         else{
-            $data = User::create([
-                'name'     => $user->name,
-                'email'    => !empty($user->email)? $user->email : '' ,
-                'provider' => $provider,
-                'provider_id' => $user->id,
-            ]);
+            // $data = User::create([
+            //     'name'     => $user->name,
+            //     'email'    => !empty($user->email)? $user->email : '' ,
+            //     'provider' => $provider,
+            //     'provider_id' => $user->id,
+            $data = new User ;
+            $data->name = $user->name;
+            $data->email = !empty($user->email)? $user->email : '' ;
+            $data->poto = $user->avatar;
+            $data->provider = $provider;
+            $data->provider_id = $user->id;
             return $data;
         }
     }
