@@ -18,10 +18,15 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email',120)->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password', 60)->nullable();
             $table->string('poto')->default('default.png');
+            $table->string('provider');
+            $table->string('provider_id');
             $table->rememberToken();
             $table->timestamps();
+   
+
+  
         });
     }
 

@@ -2,6 +2,9 @@
 
 @section('content')
 @foreach ($user as $user)
+
+
+ 
     
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -9,14 +12,23 @@
                 <div class="card-body text-center">
                     <img src="/storage/profile/{{$user->poto }}" alt="" class="rounded-circle">
                 <h1 class="text-center mt-3">{{ $user->name }}</h1>
-                    <span>10 Folower </span> | <span> 30 Post</span>
+                    <span>10 Folower </span> | <span> 30 Post</span>  @guest
+      @if (Route::has('register'))
+           @endif
+       @else
+      @if (Auth::user()->name === $user->name)
+                <a href="{{Route('editprofile')}}">Edit Profile</a>
+    @else
+    @endif
+   @endguest
+  
             </div>
             </div>
         </div>
 @endforeach
 
         @foreach ($blog as $blog)
-          <div class="col-md-6 mt-3">
+          <div class="col-md-5 mt-3">
            <div class="card">
            <a href="{{Route('details',$blog->slug)}}">
             <div class="row">
@@ -32,7 +44,7 @@
             </a>
         </div>
         @endforeach
+</div>
+</div>
 
-
-    </div>
 @endsection

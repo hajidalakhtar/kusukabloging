@@ -37,5 +37,10 @@ class UserController extends Controller
         return redirect(Route('myprofile',Auth::user()->name));
     }
 
+    public function editProfile()
+    {
+        return view('User.editProfile');
+    }
+
 
 }
