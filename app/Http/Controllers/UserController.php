@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    public function Profile($user)
+    public function Profile($id,$id_user)
     {
         // $user = Auth::user()->name;
-        $blog = Blog::where('author',$user)->get();
-        $userdetails = User::where('name',$user)->get();
+        $blog = Blog::where('author_id',$id_user)->get();
+        $userdetails = User::where('provider_id',$id)->get();
+        // dd($userdetails);
         return view('User.profile',['blog'=> $blog,'user'=>$userdetails]);
     }
     public function Create()
@@ -34,7 +35,7 @@ class UserController extends Controller
         $image = $request->img->store('public/img');
         $blog->thumbnail = basename($image);
         $blog->save();
-        return redirect(Route('myprofile',Auth::user()->name));
+        return redirect('/profile/'.Auth::user()->provider_id.'/'.Auth::user()->id);
     }
 
     public function editProfile()

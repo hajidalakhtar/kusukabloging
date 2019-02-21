@@ -56,7 +56,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{Route('myprofile',Auth::user()->name )}}" class="dropdown-item">My Account</a>
+                                <a href="/profile/{{Auth::user()->provider_id}}/{{Auth::user()->id}}" class="dropdown-item">My Account</a>
                                 <a href="{{Route('Create')}}" class="dropdown-item">Create Artikel</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

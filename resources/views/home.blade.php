@@ -10,10 +10,11 @@
             <div class="row">
 
                  @if ($blog->poto_profile() === 'default.png')
-              <div class="col-md-1"> <a href="{{Route('myprofile',$blog->author )}}"> <img src="/storage/profile/{{$blog->poto_profile()}}" alt="" class="rounded-circle pt-1 pl-1 pb-1" width="200%;"></div> <p class="pt-2 pl-2 h5">{{$blog->author}}</a></p> </div>
+                 
+              <div class="col-md-1"> <a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}"> <img src="/storage/profile/{{$blog->poto_profile()}}" alt="" class="rounded-circle pt-1 pl-1 pb-1" width="200%;"></div> <p class="pt-2 pl-2 h5">{{$blog->author}}</a></p> </div>
 
                     @else
-              <div class="col-md-1"> <a href="{{Route('myprofile',$blog->author )}}"> <img src="{{$blog->poto_profile()}}" alt="" class="rounded-circle pt-1 pl-1 pb-1" width="200%;"></div> <p class="pt-2 pl-2 h5">{{$blog->author}}</a></p> </div>
+              <div class="col-md-1"> <a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}"> <img src="{{$blog->poto_profile()}}" alt="" class="rounded-circle pt-1 pl-1 pb-1" width="200%;"></div> <p class="pt-2 pl-2 h5">{{$blog->author}}</a></p> </div>
                     @endif
            
            <a href="{{Route('details',$blog->slug)}}">

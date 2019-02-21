@@ -11,9 +11,9 @@
             <div class="card">
                 <div class="card-body text-center">
                     @if ($user->poto === 'default.png')
-                    <img src="/storage/profile/{{$user->poto }}" alt="" class="rounded-circle">
+                    <img src="/storage/profile/{{$user->poto }}" alt="" class="rounded-circle" width="130px;">
                     @else
-                    <img src="{{$user->poto }}" alt="" class="rounded-circle">
+                    <img src="{{$user->poto }}" alt="" class="rounded-circle" width="130px">
                     @endif
                 <h1 class="text-center mt-3">{{ $user->name }}</h1>
                     <span>10 Folower </span> | <span> 30 Post</span>  @guest

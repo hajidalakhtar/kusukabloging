@@ -10,4 +10,9 @@ class Blog extends Model
     {
         return User::where('id',$this->author_id)->first()->poto;
     }
+      public function provider_id()
+    {
+        return User::where('id',$this->author_id)->first()->provider_id;
+    }
+    
 }
