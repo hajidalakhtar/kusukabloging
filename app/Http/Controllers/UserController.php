@@ -38,9 +38,20 @@ class UserController extends Controller
         return redirect('/profile/'.Auth::user()->provider_id.'/'.Auth::user()->id);
     }
 
-    public function editProfile()
+    public function editProfile($id)
     {
-        return view('User.editProfile');
+        $user = User::find($id);
+        return view('User.editProfile',['user'=>$user]);
+    }
+    public function update(Request $request,$id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->description = $request->description;
+        $user->save();
+        return redirect('/profile/'.Auth::user()->provider_id.'/'.Auth::user()->id);
+
     }
 
 

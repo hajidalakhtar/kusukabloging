@@ -73,6 +73,7 @@ class RegisterController extends Controller
         $user->name = $data['name'];
         $user->email= $data['email'];
         $user->provider_id = str::random(23);
+        $user->description = "Halo Semua nya Salam Kenal Saya".$data['name'];
         $user->password = Hash::make($data['password']);
         $user->save();
         return $user;

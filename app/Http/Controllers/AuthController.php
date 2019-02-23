@@ -49,6 +49,7 @@ class AuthController extends Controller
             //     'provider_id' => $user->id,
             $data = new User ;
             $data->name = $user->name;
+            $data->description = "Halo Semua nya Salam Kenal Saya ".$user->name;
             $data->email = !empty($user->email)? $user->email : '' ;
             $data->poto = $user->avatar;
             $data->provider = $provider;

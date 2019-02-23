@@ -53,17 +53,22 @@
 </div> --}}
 @foreach ($user as $user)
   
-<div class="container">
-	<div class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-8 col-md-offset-2">
+<div class="container mt-2" >
+	<div class="row justify-content-center">
+<div class="col-md-8 col-md-offset-2 col-xs-12">
 			<div class="mainheading">
-				<div class="row post-top-meta authorpage">
-					<div class="col-md-10 col-xs-12">
-                    <h1>{{$user->name}}</h1>    
-                    <span class="author-description">Halo Semua nya Salam Kenal Saya {{$user->name}}</span><br>
-                <a href="{{Route('editprofile')}}" class="btn follow">Follow</a>
-                        
+
+				<!-- Begin Top Meta -->
+				<div class="row post-top-meta">
+					<div class="col-md-2">
+                           @if ($user->poto === 'default.png')
+                    <img src="/storage/profile/{{$user->poto }}" alt="" class="author-thumb" width="1000px;">
+                    @else
+                    <img src="{{$user->poto }}" alt="" class="author-thumb"  >
+                    @endif
+					</div>
+					<div class="col-md-10">
+                    <a class="link-dark" href="author.html">{{$user->name}}</a>      
                        @guest
                          
                             @if (Route::has('register'))
@@ -71,26 +76,23 @@
                             @endif
                         @else
                             @if (Auth::user()->name === $user->name)
-                <a href="{{Route('editprofile')}}" class="btn follow">Edit Profile</a>
+                    <a href="{{Route('Create')}}" class="btn follow">Create Artikel</a>
+
+                <a href="{{Route('editprofile',$user->id)}}" class="btn follow">Edit Profile</a>
                 @else
+                    <a href="{{Route('Create')}}" class="btn follow">Follow</a>
+
                  @endif
                         @endguest
-
-               
+						<span class="author-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae repellendus odio, accusantium placeat voluptatibus voluptate tempora alias incidunt, officia esse illo veniam repellat dolor, quas quam facilis doloribus obcaecati. Quo!</span>
+						<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 					</div>
-					<div class="col-md-2 col-xs-12">
-                           @if ($user->poto === 'default.png')
-                    <img src="/storage/profile/{{$user->poto }}" alt="" class="author-thumb1" width="1000px;">
-                    @else
-                    <img src="{{$user->poto }}" alt="" class="author-thumb1"  >
-                    @endif
-						{{-- <img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"> --}}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+           </div>
 </div>
+
+
+				<!-- End Top Menta -->
 @endforeach
 
 <!-- End Top Author Meta
@@ -100,10 +102,7 @@
 ================================================== -->
         @foreach ($blog as $blog)
 
-<div class="graybg authorpage">
-    <div class="container">
-
-		<div class="listrecent listrelated">
+		<div class="listrecent listrelated ">
 				<div class="authorpostbox">
 					<div class="card">
 						<a href="{{Route('details',$blog->slug)}}">
@@ -114,7 +113,7 @@
 						<div class="card-block">
                             <div class="container">
 
-                        <h2 class="card-title"><a href="{{Route('details',$blog->slug)}}">{{$blog->title}}</a></h2>
+                        <h2 class="card-title mt-3"><a href="{{Route('details',$blog->slug)}}">{{$blog->title}}</a></h2>
               <h4 class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</h4>
             	<div class="metafooter">
 								<div class="wrapfooter">
@@ -141,9 +140,7 @@
                         
 					</div>
                 </div>
-        </div>
                 
-			</div>
 				<!-- end post -->
 @endforeach
 

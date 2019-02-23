@@ -24,7 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{id}/{user}', 'UserController@Profile')->name('myprofile');
 Route::get('/create', 'UserController@Create')->name('Create');
 Route::post('/store', 'UserController@Store')->name('store');
-Route::get('/edit/profile', 'UserController@editProfile')->name('editprofile');
+Route::get('/edit/profile/{id}', 'UserController@editProfile')->name('editprofile');
+Route::post('/update/profile/{id}', 'UserController@update')->name('update');
 
 // google
 Route::get('auth/{provider}', 'AuthController@redirectToProvider');
@@ -34,5 +35,9 @@ Route::get('auth/{provider}/callback', 'AuthController@handleProviderCallback');
 Route::get('detail/{slug}','BlogController@details' )->name('details');
 Route::get('/delete/{id}', 'BlogController@delete')->name('delete');
 Route::post('/create_comment', 'BlogController@create_comment')->name('create_comment');
+
+//tes
+Route::get('/like', 'UserController@like')->name('like');
+
 
 

@@ -121,7 +121,7 @@
 				<!-- Begin Top Meta -->
 				<div class="row post-top-meta">
 					<div class="col-md-2">
-						<a href="author.html">    
+						<a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">    
                              @if ($blog->poto_profile() === 'default.png')
                         <img class="author-thumb" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
 
@@ -133,7 +133,7 @@
 					</div>
 					<div class="col-md-10">
                     <a class="link-dark" href="author.html">{{$blog->author}}</a><a href="#" class="btn follow">Follow</a>
-						<span class="author-description">Founder of WowThemes.net and creator of <b>"Mediumish"</b> theme that you're currently previewing. Developing professional premium themes, templates, plugins, scripts since 2012.</span>
+						<span class="author-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae repellendus odio, accusantium placeat voluptatibus voluptate tempora alias incidunt, officia esse illo veniam repellat dolor, quas quam facilis doloribus obcaecati. Quo!</span>
 						<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 					</div>
 				</div>
