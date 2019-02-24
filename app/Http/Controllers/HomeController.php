@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Blog;
+use App\favorite;
+use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $blog =Blog::all();
+        $blog = Blog::all();
         return view('home',['blog'=>$blog]);
     }
 }

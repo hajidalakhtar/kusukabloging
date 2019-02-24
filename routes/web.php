@@ -26,18 +26,28 @@ Route::get('/create', 'UserController@Create')->name('Create');
 Route::post('/store', 'UserController@Store')->name('store');
 Route::get('/edit/profile/{id}', 'UserController@editProfile')->name('editprofile');
 Route::post('/update/profile/{id}', 'UserController@update')->name('update');
+Route::get('/favorite/artikel/{id_artikel}', 'SocialmediaController@favorite')->name('favorite');
+Route::get('/myfavorite', 'UserController@favorite')->name('Myfavorite');
+Route::get('/deletefavorite/{id}', 'SocialmediaController@delete_favorite')->name('deletefavorite');
+Route::get('/follow/create/{id_target}', 'SocialmediaController@follow')->name('follow');
+Route::get('/deletefollow/{id}', 'SocialmediaController@delete_follow')->name('unfollow');
+Route::get('/follow', 'UserController@Follow')->name('myfollow');
+
+
+
+
 
 // google
 Route::get('auth/{provider}', 'AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'AuthController@handleProviderCallback');
 
 // Blog
-Route::get('detail/{slug}','BlogController@details' )->name('details');
+Route::get('detail/{id}/{slug}','BlogController@details' )->name('details');
 Route::get('/delete/{id}', 'BlogController@delete')->name('delete');
 Route::post('/create_comment', 'BlogController@create_comment')->name('create_comment');
 
 //tes
-Route::get('/like', 'UserController@like')->name('like');
+// Route::get('/like', 'UserController@like')->name('like');
 
 
 

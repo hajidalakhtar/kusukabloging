@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 use App\Blog;
 use Auth;
+use App\favorite;
 use App\comment;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
 
-    public function details($slug)
+    public function details($id,$slug)
     {
+       
+        $favoriteCount  = favorite::where('blog_id',$id)->where('id_user', Auth::user()->id)->count();
         $blog = Blog::where('slug',$slug)->get();
         $id = comment::where('artikel_slug',$slug)->orderBy('id', 'DESC')->get();
-        // $comment = Comment::where('artikel_id',)->get();
-        // dd($id);
-     
-        return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id]);
+        return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'favoriteCount'=>$favoriteCount]);
 
     }
     public function delete($id)
@@ -34,8 +34,8 @@ class BlogController extends Controller
         $comment->isi_comment = $request->isi;
         $comment->artikel_slug = $request->title;
         $comment->save();
-        return redirect('detail/'.$request->title);
-
+        // return redirect('detail/'.$request->title);
+        return redirect()->back();
 
     }
 

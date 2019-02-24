@@ -59,6 +59,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="/profile/{{Auth::user()->provider_id}}/{{Auth::user()->id}}" class="dropdown-item">My Account</a>
                                 <a href="{{Route('Create')}}" class="dropdown-item">Create Artikel</a>
+                                <a href="{{Route('Myfavorite')}}" class="dropdown-item">My Favorite</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -71,6 +72,7 @@
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>
@@ -78,6 +80,7 @@
         </nav>
 
         <main >
+
             @yield('content')
         </main>
     </div>

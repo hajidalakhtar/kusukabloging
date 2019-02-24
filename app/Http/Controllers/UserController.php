@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use App\favorite;
 use App\Blog;
 use App\User;
+use App\Follow;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -12,11 +14,11 @@ class UserController extends Controller
 
     public function Profile($id,$id_user)
     {
-        // $user = Auth::user()->name;
+        $followCount  = Follow::where('id_user',Auth::user()->id)->where('id_target', $id_user)->count();
         $blog = Blog::where('author_id',$id_user)->get();
         $userdetails = User::where('provider_id',$id)->get();
         // dd($userdetails);
-        return view('User.profile',['blog'=> $blog,'user'=>$userdetails]);
+        return view('User.profile',['blog'=> $blog,'user'=>$userdetails,'followCount'=>$followCount]);
     }
     public function Create()
     {
@@ -53,6 +55,38 @@ class UserController extends Controller
         return redirect('/profile/'.Auth::user()->provider_id.'/'.Auth::user()->id);
 
     }
+    public function favorite()
+    {
+            $favorite = favorite::where('id_user',Auth::user()->id)->get();
+            return view('User.favorite', ['favorite'=>$favorite]);        
+    }
+    public function Follow()
+    {
+            $follow = Follow::where('id_user',Auth::user()->id)->get();
+            
+            $follow_count = Follow::where('id_user',Auth::user()->id)->count();
+            $id_blog = [];
+            $m = 0;
+            for ($i=0; $i < $follow_count; $i++) { 
+                $blog_count = Blog::where('author_id',$follow[$i]->id_target)->count();
+                for ($j=0; $j < $blog_count ; $j++) { 
+                   
+                    $data_blog = Blog::where('author_id',$follow[$i]->id_target)->get();
+                    for ($l=0; $l <= $blog_count ; $l++) { 
+                        $id_blog[$m] =  $data_blog[$j]->id;
+                        
+                    }
+                     $m++;
+                }
+            }
+            $data_blog_final = [];
+            for ($n=0; $n < count($id_blog) ; $n++) { 
+                $data_blog_final[$n] = Blog::find($id_blog[$n]);
+            }
+            return view('User.follow', ['data' => $data_blog_final]);
+
+        }
+
 
 
 }
