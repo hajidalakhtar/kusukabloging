@@ -20,13 +20,10 @@ class UserController extends Controller
             return view('User.profile',['blog'=> $blog,'user'=>$userdetails]);
   
         } else {
-            # code...
-        
-        
         $followCount  = Follow::where('id_user',Auth::user()->id)->where('id_target', $id_user)->count();
         $blog = Blog::where('author_id',$id_user)->get();
         $userdetails = User::where('provider_id',$id)->get();
-        return view('User.profile',['blog'=> $blog,'user'=>$userdetails,'followCount'=>$followCount]);
+        return view('User.profile',['blog1'=> $blog,'user'=>$userdetails,'followCount'=>$followCount]);
   }
     }
     public function Create()

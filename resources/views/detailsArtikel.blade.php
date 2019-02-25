@@ -82,10 +82,8 @@
 
 		<!-- Begin Fixed Left Share -->
 		<div class="col-md-2 col-xs-12">
-			<div class="share">
-				<p>
-					Share
-				</p>
+			<div class="share mt-5">
+		
 				<ul>
 					<li>
 					<a target="_blank" href="https://twitter.com/home?status=http%3A//www.wowthemes.net">
@@ -106,11 +104,21 @@
                             @endif
                             @else
                             <a target="" href="{{Route('register')}}"><i class="far fa-lg fa-bookmark"></i></a>
-                                
                             @endif
                           
+                      </li>
+                      	<li>
+                            @if (Auth::user() == !null)
+                                  @if ($likeCount == 1)
+                            <a href="{{Route('deletelike',$blog->id)}}">  <i class="fas fa-lg  fa-heart"></i></a>
+                            @else
+                            <a target="" href="{{Route('like',$blog->id)}}"><i class="far  fa-lg  fa-heart"></i></a>
+                            @endif
+                            @else
+                            <a target="" href="{{Route('register')}}"><i class="far fa-lg  fa-heart"></i></a>
+                            @endif
                           
-                </li>
+                      </li>
 				</ul>
 			
 			</div>
@@ -170,8 +178,8 @@
                 <a href="{{Route('delete',$blog->id)}}" class="btn btn-danger">Delete</a>
                      @endif
                         @endguest
+                        <span class="float-right"> {{$like_count}} <i class="far  fa-heart"></i></span> 
                 </ul>
-                
 			</div>
 			<!-- End Tags -->
 

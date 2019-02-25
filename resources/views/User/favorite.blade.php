@@ -4,7 +4,11 @@
 <div class="container">
 	<div class="mainheading">
 		<h1 class="sitetitle">My Favorite</h1>
-		<p class="lead">
+		<p class="lead">	
+			@if (count($favorite) == null)
+		
+			<h1 class="text-center " style="margin-top: 14%">Tidak Ada Favorite</h1>
+		@else
 	</div>
 	<section class="featured-posts">
 	<div class="section-title">
@@ -49,5 +53,5 @@
 			</div>
         </div>
         @endforeach
-
+@endif
 @endsection

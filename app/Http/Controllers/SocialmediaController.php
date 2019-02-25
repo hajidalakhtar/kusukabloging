@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Follow;
 use App\favorite;
+use App\like;
 use Illuminate\Http\Request;
 
 class SocialmediaController extends Controller
@@ -24,6 +25,7 @@ class SocialmediaController extends Controller
         $favorite->delete();
         return redirect()->back();
     }
+
     public function follow($id_target)
     {
         $follow = new Follow;
@@ -33,10 +35,30 @@ class SocialmediaController extends Controller
         return redirect()->back();
 
     }
+
     public function delete_follow($id)
     {
         $follow = Follow::where('id_target',$id);
         $follow->delete();
+        return redirect()->back();
+        
+    }
+
+
+     public function like($id_target)
+    {
+        $like = new like;
+        $like->id_user = Auth::user()->id;
+        $like->id_blog = $id_target;
+        $like->save();
+        return redirect()->back();
+
+    }
+    
+    public function delete_like($id)
+    {
+        $like = like::where('id_blog',$id);
+        $like->delete();
         return redirect()->back();
         
     }

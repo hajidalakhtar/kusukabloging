@@ -53,8 +53,10 @@
 ================================================== -->
 <!-- Begin Author Posts
 ================================================== -->
-        @foreach ($blog as $blog)
-
+    @if (count($blog1) == 0)
+<h1 class="text-center mt-5">Belom Ada Post dari {{$user->name}}</h1>
+        @else
+        @foreach ($blog1 as $blog)
 		<div class="listrecent listrelated ">
 				<div class="authorpostbox">
 					<div class="card">
@@ -98,4 +100,5 @@
 				<!-- end post -->
 @endforeach
 
+		@endif
 @endsection
