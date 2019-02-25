@@ -14,11 +14,20 @@ class UserController extends Controller
 
     public function Profile($id,$id_user)
     {
+        if (Auth::user() == null) {
+             $blog = Blog::where('author_id',$id_user)->get();
+             $userdetails = User::where('provider_id',$id)->get();
+            return view('User.profile',['blog'=> $blog,'user'=>$userdetails]);
+  
+        } else {
+            # code...
+        
+        
         $followCount  = Follow::where('id_user',Auth::user()->id)->where('id_target', $id_user)->count();
         $blog = Blog::where('author_id',$id_user)->get();
         $userdetails = User::where('provider_id',$id)->get();
-        // dd($userdetails);
         return view('User.profile',['blog'=> $blog,'user'=>$userdetails,'followCount'=>$followCount]);
+  }
     }
     public function Create()
     {
@@ -62,7 +71,11 @@ class UserController extends Controller
     }
     public function Follow()
     {
-            $follow = Follow::where('id_user',Auth::user()->id)->get();
+        if (Auth::user() == null) {
+            return redirect('/register');
+
+        } else {
+        $follow = Follow::where('id_user',Auth::user()->id)->get();
             
             $follow_count = Follow::where('id_user',Auth::user()->id)->count();
             $id_blog = [];
@@ -83,10 +96,13 @@ class UserController extends Controller
             for ($n=0; $n < count($id_blog) ; $n++) { 
                 $data_blog_final[$n] = Blog::find($id_blog[$n]);
             }
+
+           
+            
+
             return view('User.follow', ['data' => $data_blog_final]);
 
         }
-
-
+    }
 
 }

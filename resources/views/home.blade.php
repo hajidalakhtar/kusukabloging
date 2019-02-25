@@ -70,12 +70,9 @@
 								<span class="meta-footer-thumb">
 								<a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">
                                      @if ($blog->poto_profile() === 'default.png')
-                 
                                     <img class="author-thumb" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
-
                                       @else
                                     <img class="author-thumb" src="{{$blog->poto_profile()}}" alt="Sal">
-                   
                                      @endif
                                 </a>
 								</span>

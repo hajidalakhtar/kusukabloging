@@ -1,16 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+
+       
+                          
 <div class="container">
 	<div class="mainheading">
-		<h1 class="sitetitle">My Favorite</h1>
+		<h1 class="sitetitle">My Follow</h1>
 		<p class="lead">
 	</div>
 	<section class="featured-posts">
+	@if ($data == null)
+				<h1 class="text-center mt-5">Anda Belom MemFolow Siapapun</h1>
+		@else
+				
 	<div class="section-title">
 	</div>
 	<div class="card-columns listfeaturedtag">
-        @foreach ($data as $blog)
+
+	
+		@foreach ($data as $blog)
 		<div class="card">
 			<div class="row">
 				<div class="col-md-5 wrapthumbnail">
@@ -49,5 +58,6 @@
 			</div>
         </div>
         @endforeach
+		@endif
 
 @endsection

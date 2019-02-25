@@ -98,11 +98,17 @@
 					</a>
                     </li>
                     	<li>
-                            @if ($favoriteCount == 1)
+                            @if (Auth::user() == !null)
+                                  @if ($favoriteCount == 1)
                             <a href="{{Route('deletefavorite',$blog->id)}}">  <i class="fas fa-lg fa-bookmark"></i> </a>
                             @else
                             <a target="" href="{{Route('favorite',$blog->id)}}"><i class="far fa-lg fa-bookmark"></i></a>
                             @endif
+                            @else
+                            <a target="" href="{{Route('register')}}"><i class="far fa-lg fa-bookmark"></i></a>
+                                
+                            @endif
+                          
                           
                 </li>
 				</ul>

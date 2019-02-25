@@ -12,11 +12,17 @@ class BlogController extends Controller
 
     public function details($id,$slug)
     {
-       
+
+        if (Auth::user() == null) {
+        $blog = Blog::where('slug',$slug)->get();
+        $id = comment::where('artikel_slug',$slug)->orderBy('id', 'DESC')->get();
+        return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id]);
+        } else {
         $favoriteCount  = favorite::where('blog_id',$id)->where('id_user', Auth::user()->id)->count();
         $blog = Blog::where('slug',$slug)->get();
         $id = comment::where('artikel_slug',$slug)->orderBy('id', 'DESC')->get();
         return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'favoriteCount'=>$favoriteCount]);
+        }
 
     }
     public function delete($id)
