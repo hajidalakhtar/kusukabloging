@@ -17,6 +17,7 @@ class CreateBlogsTable extends Migration
             $table->increments('id');
             $table->string('author');
             $table->integer('author_id');
+            $table->integer('company_id');
             $table->string('title');
             $table->string('category');
             $table->string('thumbnail');

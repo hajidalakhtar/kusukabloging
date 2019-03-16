@@ -2,7 +2,7 @@
 
 @section('content')
 
-@foreach ($user as $user)
+  
 <div class="container mt-2" >
 	<div class="row justify-content-center">
 <div class="col-md-8 col-md-offset-2 col-xs-12" style="border-bottom: 1px solid #D7D7D7">
@@ -11,48 +11,47 @@
 				<!-- Begin Top Meta -->
 				<div class="row post-top-meta">
 					<div class="col-md-2">
-                           @if ($user->poto === 'default.png')
-                    <img src="/storage/profile/{{$user->poto }}" alt="" class="author-thumb" width="1000px;">
+                           @if ($data->poto === 'default.png')
+                    <img src="/storage/profile/{{$data->poto }}" alt="" class="author-thumb" width="1000px;">
                     @else
-                    <img src="{{$user->poto }}" alt="" class="author-thumb"  >
+                    <img src="{{$data->poto }}" alt="" class="author-thumb"  >
                     @endif
 					</div>
 					<div class="col-md-10" style="margin-top: 3%">
-                    <a class="link-dark" href="author.html">{{$user->name}}</a>      
+                    <a class="link-dark" href="author.html">{{$data->name}}</a>      
                        @guest
                          
                             @if (Route::has('register'))
                               
                             @endif
                         @else
-                            @if (Auth::user()->provider_id === $user->provider_id)
+                            @if (Auth::user()->provider_id === $data->provider_id)
                     <a href="{{Route('Create')}}" class="btn follow">Create Artikel</a>
 
-                <a href="{{Route('editprofile',$user->id)}}" class="btn follow">Edit Profile</a>
+                <a href="{{Route('editprofile',$data->id)}}" class="btn follow">Edit Profile</a>
                 @else
                         @if ($followCount == 1)
-                        <a href="{{Route('unfollow',$user->id)}}" class="btn follow">UnFollow</a>
+                        <a href="{{Route('unfollow',$data->id)}}" class="btn follow">UnFollow</a>
                         @else
-                        <a href="{{Route('follow',$user->id)}}" class="btn follow">Follow</a>
+                        <a href="{{Route('follow',$data->id)}}" class="btn follow">Follow</a>
                         @endif
 
                  @endif
                         @endguest
                         <br>
-                    <span class="author-description">{{$user->description}}</span> <br>
+                    <span class="author-description">{{$data->description}}</span> <br>
                     <span class="post-date">{{count($blog1)}} Artikel</span><span class="dot"></span><span class="post-read">{{$like_count}} Like</span><span class="dot"></span><span class="post-read">{{$follow_count}} Followers</span>
 					</div>
                 </div>
            </div>
 </div>
 				<!-- End Top Menta -->
-@endforeach
 <!-- End Top Author Meta
 ================================================== -->
 <!-- Begin Author Posts
 ================================================== -->
     @if (count($blog1) == 0)
-<h1 class="text-center mt-5">Belom Ada Post dari {{$user->name}}</h1>
+<h1 class="text-center mt-5">Belom Ada Post dari {{$data->name}}</h1>
         @else
         @foreach ($blog1 as $blog)
 		<div class="listrecent listrelated mt-5">

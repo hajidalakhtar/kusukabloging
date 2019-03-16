@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Kusuka Bloging</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -59,16 +59,7 @@ ul, ol {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .nav-list li a:before {
-    content: "\f14f";
-    font: 400 21px/1 "Material Design Icons";
-    color: #4d6de6;
-    display: inline-block;
-    vertical-align: baseline;
-    margin-left: -28px;
-    margin-right: 7px;
-    opacity: 0;
-    visibility: hidden;
-    transition: .22s ease;
+  text-decoration: none;
 }
 </style>
 </head>
@@ -77,7 +68,7 @@ ul, ol {
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                  <h1> KB</h1>
+                  <h1>  KB</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -110,6 +101,7 @@ ul, ol {
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="/profile/{{Auth::user()->provider_id}}/{{Auth::user()->id}}" class="dropdown-item">My Account</a>
                                 <a href="{{Route('Create')}}" class="dropdown-item">Create Artikel</a>
+                                <a href="{{Route('myfollow')}}" class="dropdown-item">My Follow</a>
                                 <a href="{{Route('Myfavorite')}}" class="dropdown-item">My Favorite</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -129,21 +121,16 @@ ul, ol {
                 </div>
             </div>
         </nav>
-
         <main >
-
             @yield('content')
         </main>
-        <br >
-        <br >
-        <br >
         <br>
-        <footer class="section footer-classic context-dark bg-image mt-5" style="background: #2d3246;">
-        <div class="container pt-5 ">
+        <footer class="section footer-classic context-dark bg-image mt-5 " style="background: white; border-top:1px solid #D8D8D8">
+        <div class="container pt-5 text-dark ">
           <div class="row row-30">
             <div class="col-md-4 col-xl-5">
-              <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
-                <p>KusukaBloging Adalah Sebuah website untuk anda membaca berbagai macam artikel,Blog,novel,dan karya tulis lain nya </p>
+              <div class="pr-xl-4"><a class="brand text-dark h2 " href="/home" style="text-decoration:none">Kusuka Bloging</a>
+                <p class="mt-3">KusukaBloging Adalah Sebuah website untuk anda membaca berbagai macam artikel,Blog,novel,dan karya tulis lain nya </p>
                 <!-- Rights-->
                 <p class="rights"><span>©  </span><span class="copyright-year">2019</span><span> </span><span>Made With &nbsp; <b> <i class="fab fa-laravel"></i></b> &nbsp; By Hajid Al Akhtar</span></p>
               </div>
@@ -152,7 +139,7 @@ ul, ol {
               <h5>Contacts</h5>
               <dl class="contact-list">
                 <dt>email:</dt>
-                <dd><a href="mailto:hajidalakhtar@gmail.com">hajidalakhtar@gmail.com</a></dd>
+                <dd><a href="mailto:hajidalakhtar@gmail.com" class="text-dark">hajidalakhtar@gmail.com</a></dd>
               </dl>
               <dl class="contact-list">
                 <dt>github:</dt>
@@ -160,12 +147,11 @@ ul, ol {
                 </dd>
               </dl>
             </div>
-            <div class="col-md-4 col-xl-3">
+            <div class="col-md-4 col-xl-3 ">
               <h5>Links</h5>
-              <ul class="nav-list pb-4">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Blog</a></li>
+              <ul class="nav-list pb-4 ">
+                <li><a href="#" class="text-dark" style="text-decoration:none">Home</a></li>
+                <li><a href="#" class="text-dark" style="text-decoration:none">Api</a></li>
               </ul>
             </div>
           </div>

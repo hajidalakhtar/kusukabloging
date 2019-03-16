@@ -18,11 +18,11 @@
                 <label for="category">Category</label>
                 <select name="category" id="" class="form-control">
                     <option value="Dev">Dev</option>
-                    <option value="bebas">Bebas</option>
-                    <option value="cerita">Cerita</option>
-                    <option value="indonesia">Indonesia</option>
+                    <option value="Bebas">Bebas</option>
+                    <option value="Cerita">Cerita</option>
+                    <option value="Indonesia">Indonesia</option>
                 </select>
-                <label for="">Isi Artikel</label>
+                     <label for="">Isi Artikel</label>
 
                 <div id="mytextarea" >
                     </div>

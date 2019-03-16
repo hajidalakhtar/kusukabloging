@@ -28,9 +28,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-      public function blogUser()
-    {
-        return $this->belongsTo('App\Blog');
-    }
+    
   
 }

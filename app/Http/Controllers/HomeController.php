@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
     public function indonesia()
     {
-        $blog = Blog::where('category','indonesia')->get();
+        $blog = Blog::where('category','Indonesia')->get();
         return view('home',['blog'=>$blog]);
 
     }
@@ -42,13 +42,13 @@ class HomeController extends Controller
     }
         public function bebas()
     {
-        $blog = Blog::where('category','bebas')->get();
+        $blog = Blog::where('category','Bebas')->get();
         return view('home',['blog'=>$blog]);
 
     }
         public function cerita()
     {
-        $blog = Blog::where('category','cerita')->get();
+        $blog = Blog::where('category','Cerita')->get();
         return view('home',['blog'=>$blog]);
 
     }

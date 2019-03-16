@@ -37,10 +37,10 @@ Route::get('/deletefavorite/{id}', 'SocialmediaController@delete_favorite')->nam
 Route::get('/follow/create/{id_target}', 'SocialmediaController@follow')->name('follow');
 Route::get('/deletefollow/{id}', 'SocialmediaController@delete_follow')->name('unfollow');
 Route::get('/follow', 'UserController@Follow')->name('myfollow');
-Route::get('/like/artikel/{id_artikel}', 'SocialmediaController@like')->name('like');
+Route::get('/like/artikel/{id_artikel}/{id_author}', 'SocialmediaController@like')->name('like');
 Route::get('/deletelike/{id}', 'SocialmediaController@delete_like')->name('deletelike');
 
-
+Route::get('/company/profile/{id_company}','CompanyController@home')->name('company');
 
 
 

@@ -45,10 +45,11 @@ class SocialmediaController extends Controller
     }
 
 
-     public function like($id_target)
+     public function like($id_target,$id_author)
     {
         $like = new like;
         $like->id_user = Auth::user()->id;
+        $like->id_author = $id_author;
         $like->id_blog = $id_target;
         $like->save();
         return redirect()->back();

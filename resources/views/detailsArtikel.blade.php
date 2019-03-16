@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 {{-- <div class="container" style="width:60%">
 
     @foreach ($blog as $blog)
@@ -79,7 +78,6 @@
 
 <div class="container">
 	<div class="row">
-
 		<!-- Begin Fixed Left Share -->
 		<div class="col-md-2 col-xs-12">
 			<div class="share mt-5">
@@ -96,6 +94,7 @@
 					</a>
                     </li>
                     	<li>
+        {{-- <details-post/> --}}
                             @if (Auth::user() == !null)
                                   @if ($favoriteCount == 1)
                             <a href="{{Route('deletefavorite',$blog->id)}}">  <i class="fas fa-lg fa-bookmark"></i> </a>
@@ -112,7 +111,7 @@
                                   @if ($likeCount == 1)
                             <a href="{{Route('deletelike',$blog->id)}}">  <i class="fas fa-lg  fa-heart"></i></a>
                             @else
-                            <a target="" href="{{Route('like',$blog->id)}}"><i class="far  fa-lg  fa-heart"></i></a>
+                            <a target="" href="{{Route('like',[$blog->id,$blog->author_id])}}"><i class="far  fa-lg  fa-heart"></i></a>
                             @endif
                             @else
                             <a target="" href="{{Route('register')}}"><i class="far fa-lg  fa-heart"></i></a>
@@ -128,36 +127,11 @@
 		<!-- Begin Post -->
 		<div class="col-md-8 col-md-offset-2 col-xs-12">
 			<div class="mainheading">
-
-				<!-- Begin Top Meta -->
-				<div class="row post-top-meta">
-					<div class="col-md-2">
-						<a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">    
-                             @if ($blog->poto_profile() === 'default.png')
-                        <img class="author-thumb" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
-
-                    @else
-
-                        <img class="author-thumb" src="{{$blog->poto_profile()}}" alt="Sal">
-                    @endif
-                        </a>
-					</div>
-					<div class="col-md-10">
-                    <a class="link-dark" href="author.html">{{$blog->author}}</a><a href="#" class="btn follow">Follow</a>
-						<span class="author-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae repellendus odio, accusantium placeat voluptatibus voluptate tempora alias incidunt, officia esse illo veniam repellat dolor, quas quam facilis doloribus obcaecati. Quo!</span>
-						<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
-					</div>
-				</div>
-				<!-- End Top Menta -->
-
-            <h1 class="posttitle">{{$blog->title}}</h1>
-
+			
+            <h1 class="posttitle text-center" style="font-size:42px;border-bottom:1px solid black; padding-bottom:20px;">{{$blog->title}}</h1>
 			</div>
-
-			<!-- Begin Featured Image -->
         <img class="featured-image img-fluid" src="/storage/img/{{$blog->thumbnail}}" alt="">
 			<!-- End Featured Image -->
-
 			<!-- Begin Post Content -->
 			<div class="article-post">
 			{!!$blog->isi!!}
@@ -180,16 +154,32 @@
                         @endguest
                         <span class="float-right"> {{$like_count}} <i class="far  fa-heart"></i></span> 
                 </ul>
-			</div>
-			<!-- End Tags -->
+            </div>
+            	<div class="row post-top-meta">
+					<div class="col-md-2">
+						<a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">    
+                             @if ($blog->poto_profile() === 'default.png')
+                        <img class="author-thumb" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
+                    @else
+                        <img class="author-thumb" src="{{$blog->poto_profile()}}" alt="Sal">
+                    @endif
+                        </a>
+					</div>
+					<div class="col-md-10 mt-3">
+                    <a class="link-dark" href="author.html">{{$blog->author}}</a>
+                    
+                    <br>
+                    <span class="author-description">{{$blog->description()}}</span>
+                    <br>
+						<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
+					</div>
+				</div>
 
 		</div>
-		<!-- End Post -->
 
 	</div>
 </div>
 @endforeach 
-
 <div class="container" style="width: 60%">
 <h4>Commnet</h4>
 
@@ -208,16 +198,19 @@
     </form>
     <br>
 
+    @if (count($comment) >= 1)
     @foreach ($comment as $data)
+        
+   
             <div class="row mt-5">
                 <div class="col-md-2">
                     	<a href="author.html">    
                              @if ($data->poto_profile() === 'default.png')
-                        <img class="author-thumb" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal" >
+                        <img class="rounded" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal" >
 
                     @else
 
-                        <img class="" src="{{$data->poto_profile()}}" alt="Sal" width="100px;">
+                        <img class="rounded" src="{{$data->poto_profile()}}" alt="Sal" width="100px;">
                     @endif
                         </a>
                 </div>
@@ -227,8 +220,11 @@
                      <h3 class="pt-4">{{$data->isi_comment}}</h3>
                 </div>
             </div>
-    
-@endforeach  
+@endforeach 
+ @else
+ <h1 class="text-center mt-5">Tidak Ada Comment</h1>
+        
+    @endif 
 </div>
 <!-- End Article
 ================================================== -->

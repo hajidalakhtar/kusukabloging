@@ -14,6 +14,10 @@ class Blog extends Model
     {
         return User::where('id',$this->author_id)->first()->provider_id;
     }
+        public function description()
+    {
+        return User::where('id',$this->author_id)->first()->description;
+    }
  
     
 }
