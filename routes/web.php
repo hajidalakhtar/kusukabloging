@@ -43,6 +43,12 @@ Route::get('/deletelike/{id}', 'SocialmediaController@delete_like')->name('delet
 Route::get('/company/profile/{id_company}','CompanyController@home')->name('company');
 
 
+Route::get('/ceklike/{idUser}/{idBlog}','SocialmediaController@cekLike')->name('cekLike');
+
+// api
+
+Route::get('/userid', 'UserController@userId');
+
 
 
 // google

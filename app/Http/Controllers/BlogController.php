@@ -28,6 +28,7 @@ class BlogController extends Controller
         return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'favoriteCount'=>$favoriteCount,'likeCount'=>$likeCount,'like_count'=>$like_count ]);
         }
 
+        
     }
     public function delete($id)
     {

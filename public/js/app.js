@@ -1778,18 +1778,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['idartikel', 'iduser'],
   data: function data() {
     return {
       bookmark: false,
-      like: false
+      like: false,
+      id_artikel: Number(this.idartikel),
+      id_author: Number(this.iduser),
+      id_like: null
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/ceklike/' + this.id_author + '/' + this.id_artikel).then(function (response) {
+      _this.id_like = response.data.id;
+
+      if (response.data.id > 0) {
+        _this.like = true;
+      } else {
+        _this.like = false;
+      }
+    });
+  },
   methods: {
     Like: function Like() {
       if (this.like == true) {
+        axios.get('/deletelike/' + this.id_like).then(console.log('/deletelike/' + this.id_like));
         this.like = false;
       } else {
+        axios.get('/like/artikel/' + this.id_artikel + '/' + this.id_author).then(console.log('/like/artikel/' + this.id_artikel + '/' + this.id_author));
         this.like = true;
       }
     },

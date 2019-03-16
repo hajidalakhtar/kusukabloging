@@ -58,9 +58,24 @@ class SocialmediaController extends Controller
     
     public function delete_like($id)
     {
-        $like = like::where('id_blog',$id);
+        $like = like::find($id);
         $like->delete();
         return redirect()->back();
         
     }
+
+    public function cekLike($idUser,$idBlog)
+    {
+        $like = like::where('id_user',$idUser)->where('id_blog',$idBlog)->get();
+        if (count($like) >= 1) {
+            $like_first = $like[0];
+            return $like_first;
+        }else{
+            return 'data tidak';
+
+        }
+
+    }
+
+
 }

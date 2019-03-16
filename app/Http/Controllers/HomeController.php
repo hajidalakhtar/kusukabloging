@@ -52,4 +52,5 @@ class HomeController extends Controller
         return view('home',['blog'=>$blog]);
 
     }
+    
 }
