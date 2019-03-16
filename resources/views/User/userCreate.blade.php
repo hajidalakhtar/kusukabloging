@@ -21,7 +21,6 @@
                     <option value="bebas">Bebas</option>
                     <option value="cerita">Cerita</option>
                     <option value="indonesia">Indonesia</option>
-                    <option value="komputer">Komputer</option>
                 </select>
                 <label for="">Isi Artikel</label>
 

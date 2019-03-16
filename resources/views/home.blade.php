@@ -46,7 +46,7 @@
 	================================================== -->
 	<section class="featured-posts">
 	<div class="section-title">
-		<h2><span>Featured</span></h2>
+		<h2 class="text-center"><span><a class="text-dark" style="text-decoration:none" href="/home"> Home</a></span> <span class="ml-4"><a class="text-dark" style="text-decoration:none" href="/cerita"></a> <a class="text-dark" style="text-decoration:none" href="/cerita"> Cerita </a> </span> <span class="ml-4"><a class="text-dark" style="text-decoration:none" href="/dev"> Dev </a></span> <span class="ml-4"> <a class="text-dark" style="text-decoration:none" href="/bebas">	Bebas </a></span>  <span class="ml-4"> <a class="text-dark" style="text-decoration:none" href="/indonesia"> Indonesia </a></span></h2>
 	</div>
 	<div class="card-columns listfeaturedtag">
 

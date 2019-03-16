@@ -19,6 +19,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/indonesia', 'HomeController@indonesia')->name('indonesia');
+Route::get('/bebas', 'HomeController@bebas')->name('bebas');
+Route::get('/cerita', 'HomeController@cerita')->name('cerita');
+Route::get('/dev', 'HomeController@dev')->name('dev');
+
 
 //  User Route 
 Route::get('/profile/{id}/{user}', 'UserController@Profile')->name('myprofile');
