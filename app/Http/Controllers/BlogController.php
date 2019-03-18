@@ -50,4 +50,6 @@ class BlogController extends Controller
 
     }
 
+
+
 }

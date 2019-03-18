@@ -1785,7 +1785,8 @@ __webpack_require__.r(__webpack_exports__);
       like: false,
       id_artikel: Number(this.idartikel),
       id_author: Number(this.iduser),
-      id_like: null
+      id_like: null,
+      id_favorite: null
     };
   },
   mounted: function mounted() {
@@ -1800,6 +1801,17 @@ __webpack_require__.r(__webpack_exports__);
         _this.like = false;
       }
     });
+    axios.get('/cekbookmark/' + this.id_author + '/' + this.id_artikel).then(function (response) {
+      _this.id_favorite = response.data.id;
+
+      if (response.data.id > 0) {
+        _this.bookmark = true;
+      } else {
+        _this.bookmark = false;
+      }
+
+      console.log('/cekbookmark/' + _this.id_author + '/' + _this.id_artikel);
+    });
   },
   methods: {
     Like: function Like() {
@@ -1813,8 +1825,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     Bookmark: function Bookmark() {
       if (this.bookmark == true) {
+        axios.get('/deletefavorite/' + this.id_favorite).then(console.log('/favorite/artikel/' + this.id_favorite));
         this.bookmark = false;
       } else {
+        axios.get('/favorite/artikel/' + this.id_artikel).then(console.log('/favorite/artikel/' + this.id_like));
         this.bookmark = true;
       }
     }

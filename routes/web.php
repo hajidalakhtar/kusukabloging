@@ -44,6 +44,7 @@ Route::get('/company/profile/{id_company}','CompanyController@home')->name('comp
 
 
 Route::get('/ceklike/{idUser}/{idBlog}','SocialmediaController@cekLike')->name('cekLike');
+Route::get('/cekbookmark/{idUser}/{idBlog}','SocialmediaController@cekBookmark')->name('cekBookmark');
 
 // api
 

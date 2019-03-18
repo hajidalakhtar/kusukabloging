@@ -22,6 +22,7 @@
                 id_artikel: Number(this.idartikel),
                 id_author:Number(this.iduser),
                 id_like : null,
+                id_favorite: null,
             }
         },
         mounted() {
@@ -36,6 +37,21 @@
             this.like = false
             }
         });
+
+
+        axios
+         .get('/cekbookmark/'+this.id_author+'/'+this.id_artikel)
+        .then((response) =>{
+            this.id_favorite = response.data.id
+            if (response.data.id > 0) {
+            this.bookmark = true
+            
+            } else {
+            this.bookmark = false
+            }
+            console.log('/cekbookmark/'+this.id_author+'/'+this.id_artikel);
+        });
+
 
 
         },
@@ -59,8 +75,19 @@
             },
             Bookmark: function(){
                    if(this.bookmark == true){
+                       
+                                      axios
+                           .get('/deletefavorite/'+this.id_favorite)
+                         .then(console.log('/favorite/artikel/'+this.id_favorite));
+          
                     this.bookmark = false
                 }else{
+
+                          axios
+                           .get('/favorite/artikel/'+this.id_artikel)
+                     .then(console.log('/favorite/artikel/'+this.id_like));
+          
+       
                     this.bookmark = true
                 }
             }

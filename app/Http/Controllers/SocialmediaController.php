@@ -21,8 +21,8 @@ class SocialmediaController extends Controller
 
         public function delete_favorite($id)
     {
-        $favorite = favorite::where('blog_id',$id);
-        $favorite->delete();
+        $favorite = favorite::destroy($id);
+        // $favorite->delete();
         return redirect()->back();
     }
 
@@ -70,6 +70,19 @@ class SocialmediaController extends Controller
         if (count($like) >= 1) {
             $like_first = $like[0];
             return $like_first;
+        }else{
+            return 'data tidak';
+
+        }
+
+    }
+    public function cekBookmark($idUser,$idBlog)
+    {
+        $bookmark = favorite::where('id_user',$idUser)->where('blog_id',$idBlog)->get();
+        // dd($bookmark);
+        if (count($bookmark) >= 1) {
+            $bookmark_first = $bookmark[0];
+            return $bookmark_first;
         }else{
             return 'data tidak';
 
