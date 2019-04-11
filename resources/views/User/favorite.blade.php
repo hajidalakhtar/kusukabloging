@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-md-5 wrapthumbnail">
 					<a href="{{Route('details',[$blog->blog->id , $blog->blog->slug])}}">
-						<div class="thumbnail" style="background-image:url('/storage/img/{{$blog->blog->thumbnail}}');">
+						<div class="thumbnail" style="background-image:url('{{asset('/storage/img/'.$blog->blog->thumbnail)}}');">
 						</div>
 					</a>
 				</div>

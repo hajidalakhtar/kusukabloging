@@ -12,8 +12,7 @@
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    return redirect('/home');
+    return redirect(Route('home'));
 });
 
 Auth::routes();
@@ -39,9 +38,7 @@ Route::get('/deletefollow/{id}', 'SocialmediaController@delete_follow')->name('u
 Route::get('/follow', 'UserController@Follow')->name('myfollow');
 Route::get('/like/artikel/{id_artikel}/{id_author}', 'SocialmediaController@like')->name('like');
 Route::get('/deletelike/{id}', 'SocialmediaController@delete_like')->name('deletelike');
-
-Route::get('/company/profile/{id_company}','CompanyController@home')->name('company');
-
+// Route::get('/company/profile/{id_company}','CompanyController@home')->name('company');
 
 Route::get('/ceklike/{idUser}/{idBlog}','SocialmediaController@cekLike')->name('cekLike');
 Route::get('/cekbookmark/{idUser}/{idBlog}','SocialmediaController@cekBookmark')->name('cekBookmark');
@@ -60,6 +57,15 @@ Route::get('auth/{provider}/callback', 'AuthController@handleProviderCallback');
 Route::get('detail/{id}/{slug}','BlogController@details' )->name('details');
 Route::get('/delete/{id}', 'BlogController@delete')->name('delete');
 Route::post('/create_comment', 'BlogController@create_comment')->name('create_comment');
+
+// admin
+Route::get('/admin/login', 'AdminLoginController@showLoginForm');
+Route::post('/admin/login/submit', 'AdminLoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
+
+Route::get('/admin/home' , 'AdminController@home')->middleware('auth:admin')->name('admin.home');
+Route::get('/admin/delete/user/{id}' , 'AdminController@DeleteUser')->middleware('auth:admin')->name('delete.user');
+
 
 //tes
 // Route::get('/like', 'UserController@like')->name('like');

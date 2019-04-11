@@ -99,7 +99,7 @@ ul, ol {
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="/profile/{{Auth::user()->provider_id}}/{{Auth::user()->id}}" class="dropdown-item">My Account</a>
+                                <a href="{{Route('myprofile',[Auth::user()->provider_id,Auth::user()->id])}}" class="dropdown-item">My Account</a>
                                 <a href="{{Route('Create')}}" class="dropdown-item">Create Artikel</a>
                                 <a href="{{Route('myfollow')}}" class="dropdown-item">My Follow</a>
                                 <a href="{{Route('Myfavorite')}}" class="dropdown-item">My Favorite</a>
@@ -129,7 +129,7 @@ ul, ol {
         <div class="container pt-5 text-dark ">
           <div class="row row-30">
             <div class="col-md-4 col-xl-5">
-              <div class="pr-xl-4"><a class="brand text-dark h2 " href="/home" style="text-decoration:none">Kusuka Bloging</a>
+            <div class="pr-xl-4"><a class="brand text-dark h2 " href="{{Route('home')}}" style="text-decoration:none">Kusuka Bloging</a>
                 <p class="mt-3">KusukaBloging Adalah Sebuah website untuk anda membaca berbagai macam artikel,Blog,novel,dan karya tulis lain nya </p>
                 <!-- Rights-->
                 <p class="rights"><span>©  </span><span class="copyright-year">2019</span><span> </span><span>Made With &nbsp; <b> <i class="fab fa-laravel"></i></b> &nbsp; By Hajid Al Akhtar</span></p>

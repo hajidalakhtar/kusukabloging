@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use Image;
 use App\favorite;
 use App\Blog;
 use App\User;
@@ -21,10 +22,14 @@ class UserController extends Controller
     {
         
         if (Auth::user() == null) {
-             $blog = Blog::where('author_id',$id_user)->get();
-             $userdetails = User::where('provider_id',$id)->get();
-             $like_count =like::where('id_author',$id_user)->count();
-            return view('User.profile',['blog'=> $blog,'user'=>$userdetails,'like_count'=>$like_count]);
+            $like_count =like::where('id_author',$id_user)->count();
+            $follow_count =follow::where('id_target',$id_user)->count();
+            $followCount  = 2;
+            $blog = Blog::where('author_id',$id_user)->get();
+            $userdetails = User::where('provider_id',$id)->get();
+          return view('User.profile',['blog1'=> $blog,'user'=>$userdetails,'followCount'=>$followCount,'like_count'=>$like_count,'follow_count'=> $follow_count]);
+
+            // return view('User.profile',['blog1'=> $blog,'user'=>$userdetails,'like_count'=>$like_count,'follow_count'=> $follow_count]);
 
         } else {
         $like_count =like::where('id_author',$id_user)->count();
@@ -50,10 +55,12 @@ class UserController extends Controller
         $blog->slug = Str::slug($request->title);
         $blog->category = $request->category;
         $blog->isi = $request->mytextarea;
-        $image = $request->img->store('public/img');
-        $blog->thumbnail = basename($image);
+        $file       = $request->file('img');
+        $fileName   = $file->getClientOriginalName();
+        $request->file('img')->move("storage/img", $fileName);
+        $blog->thumbnail = basename($fileName);
         $blog->save();
-        return redirect('/profile/'.Auth::user()->provider_id.'/'.Auth::user()->id);
+        return redirect(Route('myprofile',[Auth::user()->provider_id,Auth::user()->id]));
     }
 
     public function editProfile($id)
@@ -68,7 +75,8 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->description = $request->description;
         $user->save();
-        return redirect('/profile/'.Auth::user()->provider_id.'/'.Auth::user()->id);
+        return redirect(Route('myprofile',[Auth::user()->provider_id,Auth::user()->id]));
+
 
     }
     public function favorite()

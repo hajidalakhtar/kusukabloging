@@ -36932,7 +36932,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "fas fa-lg fa-bookmark" })]
+            [_c("i", { staticClass: "fas fa-2x mt-1 fa-bookmark" })]
           )
         : _c(
             "button",
@@ -36952,7 +36952,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "far fa-lg fa-bookmark" })]
+            [_c("i", { staticClass: "far fa-2x mt-1 fa-bookmark" })]
           )
     ]),
     _vm._v(" "),
@@ -36975,7 +36975,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "fas fa-lg  fa-heart" })]
+            [_c("i", { staticClass: "fas fa-2x mt-1  fa-heart" })]
           )
         : _c(
             "button",
@@ -36995,7 +36995,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "far  fa-lg  fa-heart" })]
+            [_c("i", { staticClass: "far  fa-2x mt-1  fa-heart" })]
           )
     ])
   ])

@@ -12,7 +12,7 @@
 				<div class="row post-top-meta">
 					<div class="col-md-2">
                            @if ($user->poto === 'default.png')
-                    <img src="/storage/profile/{{$user->poto }}" alt="" class="author-thumb" width="1000px;">
+                    <img src="{{asset('/storage/img/'.$user->poto)}}" alt="" class="author-thumb" width="1000px;">
                     @else
                     <img src="{{$user->poto }}" alt="" class="author-thumb"  >
                     @endif
@@ -60,7 +60,7 @@
 					<div class="card">
 						<a href="{{Route('details',[$blog->id , $blog->slug])}}">
                         {{-- <img class="img-fluid img-thumb" src="assets/img/demopic/8.jpg" alt=""> --}}
-                        <img src="/storage/img/{{$blog->thumbnail}}" alt=""  class="img-fluid img-thumb">
+                        <img src="{{asset('/storage/img/'.$blog->thumbnail)}}" alt=""  class="img-fluid img-thumb">
                         
 						</a>
 						<div class="card-block">
@@ -71,10 +71,10 @@
             	<div class="metafooter">
 								<div class="wrapfooter">
 									<span class="meta-footer-thumb">
-									<a href="author.html">
+									<a href="{{Route('myprofile',[$blog->provider_id(),$blog->author_id])}}">
                                              @if ($blog->poto_profile() === 'default.png')
                  
-                                    <img class="author-thumb  " src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
+                                    <img class="author-thumb  " src="{{asset('/storage/img/'.$blog->poto_profile())}}" alt="Sal">
 
                                       @else
                                     <img class="author-thumb  " src="{{$blog->poto_profile()}}" alt="Sal">
@@ -83,7 +83,8 @@
                                     </a>
 									</span>
 									<span class="author-meta">
-                                    <span class="post-name"><a href="author.html">{{$blog->author}}</a></span><br/>
+								    <span class="post-name"><a href="{{Route('myprofile',[$blog->provider_id(),$blog->author_id])}}">{{$blog->author}}</a></span><br/>
+                                    <span class="post-date"> {{$blog->created_at->day}}-{{$blog->created_at->month}}-{{$blog->created_at->year}}</span>
 
 									</span>
 								</div>

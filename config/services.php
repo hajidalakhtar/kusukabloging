@@ -42,7 +42,7 @@ return [
       'google' => [
         'client_id'     => '1042329439703-ijtf064hs96okc65c7ru0qfqkgs3kusg.apps.googleusercontent.com',
         'client_secret' => 'r6xEK58Ijp4-BqZ_foLd5Aq-',
-        'redirect'      => 'http://localhost:8000/auth/google/callback',
+        'redirect'      => 'http://kusukabloging.hajidalakhtar.site/public/auth/google/callback',
     ],
 
 ];

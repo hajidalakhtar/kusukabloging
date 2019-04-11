@@ -16,7 +16,7 @@
 	================================================== -->
 	<section class="featured-posts">
 	<div class="section-title">
-		<h2 class="text-center"><span><a class="text-dark" style="text-decoration:none" href="/home"> Home</a></span> <span class="ml-4"><a class="text-dark" style="text-decoration:none" href="/cerita"></a> <a class="text-dark" style="text-decoration:none" href="/cerita"> Cerita </a> </span> <span class="ml-4"><a class="text-dark" style="text-decoration:none" href="/dev"> Dev </a></span> <span class="ml-4"> <a class="text-dark" style="text-decoration:none" href="/bebas">	Bebas </a></span>  <span class="ml-4"> <a class="text-dark" style="text-decoration:none" href="/indonesia"> Indonesia </a></span></h2>
+	<h2 class="text-center"><span><a class="text-dark" style="text-decoration:none" href="{{Route('home')}}"> Home</a></span> <span class="ml-4"><a class="text-dark" style="text-decoration:none" href="{{Route('cerita')}}"> Cerita </a> </span> <span class="ml-4"><a class="text-dark" style="text-decoration:none" href="{{Route('dev')}}"> Dev </a></span> <span class="ml-4"> <a class="text-dark" style="text-decoration:none" href="{{Route('bebas')}}">	Bebas </a></span>  <span class="ml-4"> <a class="text-dark" style="text-decoration:none" href="{{Route('indonesia')}}"> Indonesia </a></span></h2>
 	</div>
 	<div class="card-columns listfeaturedtag">
 
@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="col-md-5 wrapthumbnail">
 					<a href="{{Route('details',[$blog->id , $blog->slug])}}">
-						<div class="thumbnail" style="background-image:url('/storage/img/{{$blog->thumbnail}}');">
+						<div class="thumbnail" style="background-image:url('{{asset('/storage/img/'.$blog->thumbnail)}}');">
 						</div>
 					</a>
 
@@ -48,9 +48,9 @@
 				
 								<div class="wrapfooter">
 							<span class="meta-footer-thumb">
-								<a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">
+								<a href="{{Route('myprofile',[$blog->provider_id(),$blog->author_id])}}">
                                      @if ($blog->poto_profile() === 'default.png')
-                                    <img class="author-thumb" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
+                                    <img class="author-thumb" src="{{asset('/storage/img/'.$blog->poto_profile())}}" alt="Sal">
                                       @else
                                     <img class="author-thumb" src="{{$blog->poto_profile()}}" alt="Sal">
                                      @endif
@@ -59,7 +59,7 @@
 																
 								</span>
 								<span class="author-meta">
-								<span class="post-name"><a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">{{$blog->author}}</a></span><br/>
+								<span class="post-name"><a href="{{Route('myprofile',[$blog->provider_id(),$blog->author_id])}}">{{$blog->author}}</a></span><br/>
 								<span class="post-date"> {{$blog->created_at->day}}-{{$blog->created_at->month}}-{{$blog->created_at->year}}</span>
 								</span>
 							</div>

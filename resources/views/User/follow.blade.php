@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-md-5 wrapthumbnail">
 					<a href="{{Route('details',[$blog->id , $blog->slug])}}">
-						<div class="thumbnail" style="background-image:url('/storage/img/{{$blog->thumbnail}}');">
+						<div class="thumbnail" style="background-image:url('{{asset('/storage/img/'.$blog->thumbnail)}}');">
 						</div>
 					</a>
 				</div>
@@ -38,7 +38,7 @@
 								<a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">
                                      @if ($blog->poto_profile() === 'default.png')
                  
-                                    <img class="author-thumb" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
+                                    <img class="author-thumb" src="{{asset('/storage/img/'.$blog->poto_profile())}}" alt="Sal">
 
                                       @else
                                     <img class="author-thumb" src="{{$blog->poto_profile()}}" alt="Sal">
@@ -47,7 +47,7 @@
                                 </a>
 								</span>
 								<span class="author-meta">
-								<span class="post-name"><a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">{{$blog->author}}</a></span><br/>
+								<span class="post-name"><a href="{{Route('myprofile',[$blog->provider_id(),$blog->author_id])}}">{{$blog->author}}</a></span><br/>
 								<span class="post-date"> {{$blog->created_at->day}}-{{$blog->created_at->month}}-{{$blog->created_at->year}}</span>
 								</span>
 								<span class="post-read-more pt-2"><a href="{{Route('deletefavorite',$blog->id)}}" title="Read Story">Delete For My Favorite</a></span>
