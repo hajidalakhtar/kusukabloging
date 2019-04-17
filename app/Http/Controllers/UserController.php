@@ -24,10 +24,9 @@ class UserController extends Controller
         if (Auth::user() == null) {
             $like_count =like::where('id_author',$id_user)->count();
             $follow_count =follow::where('id_target',$id_user)->count();
-            $followCount  = 2;
             $blog = Blog::where('author_id',$id_user)->get();
             $userdetails = User::where('provider_id',$id)->get();
-          return view('User.profile',['blog1'=> $blog,'user'=>$userdetails,'followCount'=>$followCount,'like_count'=>$like_count,'follow_count'=> $follow_count]);
+          return view('User.profile',['blog1'=> $blog,'user'=>$userdetails,'like_count'=>$like_count,'follow_count'=> $follow_count]);
 
             // return view('User.profile',['blog1'=> $blog,'user'=>$userdetails,'like_count'=>$like_count,'follow_count'=> $follow_count]);
 

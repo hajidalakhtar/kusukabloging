@@ -35,7 +35,7 @@
 						<div class="metafooter">
 							<div class="wrapfooter">
 								<span class="meta-footer-thumb">
-								<a href="/profile/{{$blog->provider_id()}}/{{$blog->author_id}}">
+								<a href="{{Route('myprofile',[$blog->provider_id(),$blog->author_id])}}">
                                      @if ($blog->poto_profile() === 'default.png')
                  
                                     <img class="author-thumb" src="{{asset('/storage/img/'.$blog->poto_profile())}}" alt="Sal">

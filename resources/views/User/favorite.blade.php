@@ -30,7 +30,7 @@
 						<div class="metafooter">
 							<div class="wrapfooter">
 								<span class="meta-footer-thumb">
-								<a href="/profile/{{$blog->blog->provider_id()}}/{{$blog->blog->author_id}}">
+								<a href="{{Route('myprofile',[$blog->blog->provider_id(),$blog->blog->author_id])}}">
                                      @if ($blog->blog->poto_profile() === 'default.png')
                  
                                     <img class="author-thumb" src="/storage/profile/{{$blog->blog->poto_profile()}}" alt="Sal">
@@ -42,7 +42,7 @@
                                 </a>
 								</span>
 								<span class="author-meta">
-								<span class="post-name"><a href="/profile/{{$blog->blog->provider_id()}}/{{$blog->blog->author_id}}">{{$blog->blog->author}}</a></span><br/>
+								<span class="post-name"><a href="{{Route('myprofile',[$blog->blog->provider_id(),$blog->blog->author_id])}}">{{$blog->blog->author}}</a></span><br/>
 								<span class="post-date"> {{$blog->blog->created_at->day}}-{{$blog->blog->created_at->month}}-{{$blog->blog->created_at->year}}</span>
 								</span>
 								<span class="post-read-more pt-2"><a href="{{Route('deletefavorite',$blog->id)}}" title="Read Story">Delete For My Favorite</a></span>

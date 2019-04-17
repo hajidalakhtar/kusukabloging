@@ -24,7 +24,7 @@ class BlogController extends Controller
         $favoriteCount  = favorite::where('blog_id',$id)->where('id_user', Auth::user()->id)->count();
         $likeCount  = like::where('id_blog',$id)->where('id_user', Auth::user()->id)->count();
         $blog = Blog::where('id',$id)->get();
-        $id = comment::where('artikel_slug',$id)->orderBy('id', 'DESC')->get();
+        $id = comment::where('artikel_slug',$id)->orderBy('id', 'DESC')->paginate(4);
         return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'favoriteCount'=>$favoriteCount,'likeCount'=>$likeCount,'like_count'=>$like_count ]);
         }
 

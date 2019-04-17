@@ -38,13 +38,11 @@ Route::get('/deletefollow/{id}', 'SocialmediaController@delete_follow')->name('u
 Route::get('/follow', 'UserController@Follow')->name('myfollow');
 Route::get('/like/artikel/{id_artikel}/{id_author}', 'SocialmediaController@like')->name('like');
 Route::get('/deletelike/{id}', 'SocialmediaController@delete_like')->name('deletelike');
-// Route::get('/company/profile/{id_company}','CompanyController@home')->name('company');
 
 Route::get('/ceklike/{idUser}/{idBlog}','SocialmediaController@cekLike')->name('cekLike');
 Route::get('/cekbookmark/{idUser}/{idBlog}','SocialmediaController@cekBookmark')->name('cekBookmark');
 
 // api
-
 Route::get('/userid', 'UserController@userId');
 
 
@@ -54,21 +52,26 @@ Route::get('auth/{provider}', 'AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'AuthController@handleProviderCallback');
 
 // Blog
-Route::get('detail/{id}/{slug}','BlogController@details' )->name('details');
+Route::get('d/{id}/{slug}','BlogController@details' )->name('details');
 Route::get('/delete/{id}', 'BlogController@delete')->name('delete');
 Route::post('/create_comment', 'BlogController@create_comment')->name('create_comment');
+
 
 // admin
 Route::get('/admin/login', 'AdminLoginController@showLoginForm');
 Route::post('/admin/login/submit', 'AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
-
 Route::get('/admin/home' , 'AdminController@home')->middleware('auth:admin')->name('admin.home');
 Route::get('/admin/delete/user/{id}' , 'AdminController@DeleteUser')->middleware('auth:admin')->name('delete.user');
+Route::get('/admin/delete/blog/{id}' , 'AdminController@delete')->middleware('auth:admin')->name('admin.delete');
+Route::get('/admin/edit/blog/{id}' , 'AdminController@edit')->middleware('auth:admin')->name('admin.edit');
+Route::post('/admin/upload/blog/{id}' , 'AdminController@upload')->middleware('auth:admin')->name('admin.upload');
 
+// AllAPI
 
-//tes
-// Route::get('/like', 'UserController@like')->name('like');
+Route::get('/api/d/{id}/{slug}','ApiController@details' )->name('api.details');
+Route::get('/api/profile/{id}/{user}', 'ApiController@Profile')->name('api.myprofile');
+
 
 
 

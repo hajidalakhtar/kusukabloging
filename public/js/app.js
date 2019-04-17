@@ -1777,8 +1777,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['idartikel', 'iduser'],
+  props: ["idartikel", "iduser"],
   data: function data() {
     return {
       bookmark: false,
@@ -1792,7 +1820,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/ceklike/' + this.id_author + '/' + this.id_artikel).then(function (response) {
+    axios.get("/public/ceklike/" + this.id_author + "/" + this.id_artikel).then(function (response) {
       _this.id_like = response.data.id;
 
       if (response.data.id > 0) {
@@ -1801,7 +1829,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.like = false;
       }
     });
-    axios.get('/cekbookmark/' + this.id_author + '/' + this.id_artikel).then(function (response) {
+    axios.get("/public/cekbookmark/" + this.id_author + "/" + this.id_artikel).then(function (response) {
       _this.id_favorite = response.data.id;
 
       if (response.data.id > 0) {
@@ -1810,25 +1838,25 @@ __webpack_require__.r(__webpack_exports__);
         _this.bookmark = false;
       }
 
-      console.log('/cekbookmark/' + _this.id_author + '/' + _this.id_artikel);
+      console.log("/cekbookmark/" + _this.id_author + "/" + _this.id_artikel);
     });
   },
   methods: {
     Like: function Like() {
       if (this.like == true) {
-        axios.get('/deletelike/' + this.id_like).then(console.log('/deletelike/' + this.id_like));
+        axios.get("/public/deletelike/" + this.id_like).then(console.log("/deletelike/" + this.id_like));
         this.like = false;
       } else {
-        axios.get('/like/artikel/' + this.id_artikel + '/' + this.id_author).then(console.log('/like/artikel/' + this.id_artikel + '/' + this.id_author));
+        axios.get("/public/like/artikel/" + this.id_artikel + "/" + this.id_author).then(console.log("/like/artikel/" + this.id_artikel + "/" + this.id_author));
         this.like = true;
       }
     },
     Bookmark: function Bookmark() {
       if (this.bookmark == true) {
-        axios.get('/deletefavorite/' + this.id_favorite).then(console.log('/favorite/artikel/' + this.id_favorite));
+        axios.get("/public/deletefavorite/" + this.id_favorite).then(console.log("/favorite/artikel/" + this.id_favorite));
         this.bookmark = false;
       } else {
-        axios.get('/favorite/artikel/' + this.id_artikel).then(console.log('/favorite/artikel/' + this.id_like));
+        axios.get("/public/favorite/artikel/" + this.id_artikel).then(console.log("/favorite/artikel/" + this.id_artikel));
         this.bookmark = true;
       }
     }
@@ -36975,7 +37003,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "fas fa-2x mt-1  fa-heart" })]
+            [_c("i", { staticClass: "fas fa-2x mt-1 fa-heart" })]
           )
         : _c(
             "button",
@@ -36995,7 +37023,7 @@ var render = function() {
                 }
               }
             },
-            [_c("i", { staticClass: "far  fa-2x mt-1  fa-heart" })]
+            [_c("i", { staticClass: "far fa-2x mt-1 fa-heart" })]
           )
     ])
   ])

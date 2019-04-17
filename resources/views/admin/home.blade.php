@@ -63,7 +63,7 @@
                                     <td  >{{$data->author}}</td>
                                     <td  width='50%;' ><p >{{$data->title}}</p></td>
                                     <td>{{$data->category}}</td>
-                                    <td  ><a href="" class="btn btn-danger">Delete</a><a href="" class="ml-3 btn btn-warning">Edit</a><a href="" class="ml-3 btn btn-success">View</a></td>
+                                  <td  ><a href="{{Route('admin.delete',$data->id)}}" class="btn btn-danger">Delete</a><a href="{{Route('admin.edit',$data->id)}}" class="ml-3 btn btn-warning">Edit</a><a href="{{Route('details',[$data->id , $data->slug])}}" class="ml-3 btn btn-success">View</a></td>
                                   </tr>
                                   @endforeach
     
