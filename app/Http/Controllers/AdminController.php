@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 // use App\Http\Controllers\Str;
 use Illuminate\Support\Str;
 use Auth;
+use App\Transaksi;
 use App\User;
 use App\Blog;
 use Illuminate\Http\Request;
@@ -14,21 +15,22 @@ class AdminController extends Controller
     {
       $blog = Blog::all();
       $user = User::all();
-      return view('admin.home',['user'=>$user,'blog'=>$blog]);
+      $transaksi = Transaksi::whereNotNull('foto')->get();
+      return view('admin.home',['user'=>$user,'blog'=>$blog,'transaksi'=>$transaksi]);
     }
-    public function DeleteUser($id)
+    public function deleteUser($id)
     {
         $user = User::find($id);
         $user->delete();
         $blog = Blog::where('author_id',$id)->get();
-        for ($i=0; $i <count($blog) ; $i++) { 
+        for ($i=0; $i < count($blog) ; $i++) { 
             $blog[$i]->delete();
         }
         $user->delete();
         return redirect()->back();
     }
 
-    public function delete($id)
+    public function adminDeleteBlog($id)
     {
         $blog = Blog::find($id);
         $blog->delete();
@@ -48,6 +50,14 @@ class AdminController extends Controller
         $blog->isi = $request->mytextarea;
         $blog->save();
         return redirect('/admin/home');
-        // return redirect(Route('myprofile',[Auth::user()->provider_id,Auth::user()->id]));
+    }
+    public function terimaPro($kode)
+    {
+        $transaksi = Transaksi::where('id_transaksi',$kode)->first();
+        $user = User::where('id',$transaksi->user)->first();
+        $user->members = 'Pro';
+        $user->save();
+        $transaksi->delete();
+        return redirect()->back();
     }
 }

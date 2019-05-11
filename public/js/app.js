@@ -1820,7 +1820,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("/public/ceklike/" + this.id_author + "/" + this.id_artikel).then(function (response) {
+    axios.get("/ceklike/" + this.id_author + "/" + this.id_artikel).then(function (response) {
       _this.id_like = response.data.id;
 
       if (response.data.id > 0) {
@@ -1829,7 +1829,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.like = false;
       }
     });
-    axios.get("/public/cekbookmark/" + this.id_author + "/" + this.id_artikel).then(function (response) {
+    axios.get("/cekbookmark/" + this.id_author + "/" + this.id_artikel).then(function (response) {
       _this.id_favorite = response.data.id;
 
       if (response.data.id > 0) {
@@ -1844,19 +1844,19 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     Like: function Like() {
       if (this.like == true) {
-        axios.get("/public/deletelike/" + this.id_like).then(console.log("/deletelike/" + this.id_like));
+        axios.get("/deletelike/" + this.id_like).then(console.log("/deletelike/" + this.id_like));
         this.like = false;
       } else {
-        axios.get("/public/like/artikel/" + this.id_artikel + "/" + this.id_author).then(console.log("/like/artikel/" + this.id_artikel + "/" + this.id_author));
+        axios.get("/like/artikel/" + this.id_artikel + "/" + this.id_author).then(console.log("/like/artikel/" + this.id_artikel + "/" + this.id_author));
         this.like = true;
       }
     },
     Bookmark: function Bookmark() {
       if (this.bookmark == true) {
-        axios.get("/public/deletefavorite/" + this.id_favorite).then(console.log("/favorite/artikel/" + this.id_favorite));
+        axios.get("/deletefavorite/" + this.id_favorite).then(console.log("/favorite/artikel/" + this.id_favorite));
         this.bookmark = false;
       } else {
-        axios.get("/public/favorite/artikel/" + this.id_artikel).then(console.log("/favorite/artikel/" + this.id_artikel));
+        axios.get("/favorite/artikel/" + this.id_artikel).then(console.log("/favorite/artikel/" + this.id_artikel));
         this.bookmark = true;
       }
     }

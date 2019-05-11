@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('poto')->default('default.png');
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
-            $table->string('company_id')->nullable();
             $table->integer('followers')->nullable();
+            $table->string('members')->default('Member');
             $table->rememberToken();
             $table->timestamps();
    

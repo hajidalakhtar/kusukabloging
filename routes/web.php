@@ -42,6 +42,13 @@ Route::get('/deletelike/{id}', 'SocialmediaController@delete_like')->name('delet
 Route::get('/ceklike/{idUser}/{idBlog}','SocialmediaController@cekLike')->name('cekLike');
 Route::get('/cekbookmark/{idUser}/{idBlog}','SocialmediaController@cekBookmark')->name('cekBookmark');
 
+Route::get('/buymember','UserController@buymember')->name('buymember');
+Route::get('/prosesBeli','UserController@prosesBeli')->name('prosesBeli');
+Route::get('/pro/pembayaran/{kode}','UserController@formBuy')->name('formbuy');
+Route::post('/uploadBukti/{kode}','UserController@uploadBukti')->name('uploadBukti');
+Route::get('/terimaPro/{kode}','AdminController@terimaPro')->name('terimaPro');
+
+
 // api
 Route::get('/userid', 'UserController@userId');
 
@@ -62,8 +69,8 @@ Route::get('/admin/login', 'AdminLoginController@showLoginForm');
 Route::post('/admin/login/submit', 'AdminLoginController@login')->name('admin.login');
 Route::get('/admin/logout', 'AdminLoginController@logout')->name('admin.logout');
 Route::get('/admin/home' , 'AdminController@home')->middleware('auth:admin')->name('admin.home');
-Route::get('/admin/delete/user/{id}' , 'AdminController@DeleteUser')->middleware('auth:admin')->name('delete.user');
-Route::get('/admin/delete/blog/{id}' , 'AdminController@delete')->middleware('auth:admin')->name('admin.delete');
+Route::get('/admin/delete/user/{id}' , 'AdminController@deleteUser')->middleware('auth:admin')->name('delete.user');
+Route::get('/admin/delete/blog/{id}' , 'AdminController@adminDeleteBlog')->middleware('auth:admin')->name('admin.delete');
 Route::get('/admin/edit/blog/{id}' , 'AdminController@edit')->middleware('auth:admin')->name('admin.edit');
 Route::post('/admin/upload/blog/{id}' , 'AdminController@upload')->middleware('auth:admin')->name('admin.upload');
 
@@ -71,6 +78,11 @@ Route::post('/admin/upload/blog/{id}' , 'AdminController@upload')->middleware('a
 
 Route::get('/api/d/{id}/{slug}','ApiController@details' )->name('api.details');
 Route::get('/api/profile/{id}/{user}', 'ApiController@Profile')->name('api.myprofile');
+
+Route::get('/api/indonesia', 'ApiController@indonesia')->name('api.indonesia');
+Route::get('/api/bebas', 'ApiController@bebas')->name('api.bebas');
+Route::get('/api/cerita', 'ApiController@cerita')->name('api.cerita');
+Route::get('/api/dev', 'ApiController@dev')->name('api.dev');
 
 
 

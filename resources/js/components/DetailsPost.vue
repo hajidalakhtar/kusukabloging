@@ -55,7 +55,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/public/ceklike/" + this.id_author + "/" + this.id_artikel)
+      .get("/ceklike/" + this.id_author + "/" + this.id_artikel)
       .then(response => {
         this.id_like = response.data.id;
         if (response.data.id > 0) {
@@ -66,7 +66,7 @@ export default {
       });
 
     axios
-      .get("/public/cekbookmark/" + this.id_author + "/" + this.id_artikel)
+      .get("/cekbookmark/" + this.id_author + "/" + this.id_artikel)
       .then(response => {
         this.id_favorite = response.data.id;
         if (response.data.id > 0) {
@@ -82,13 +82,13 @@ export default {
     Like: function() {
       if (this.like == true) {
         axios
-          .get("/public/deletelike/" + this.id_like)
+          .get("/deletelike/" + this.id_like)
           .then(console.log("/deletelike/" + this.id_like));
 
         this.like = false;
       } else {
         axios
-          .get("/public/like/artikel/" + this.id_artikel + "/" + this.id_author)
+          .get("/like/artikel/" + this.id_artikel + "/" + this.id_author)
           .then(
             console.log(
               "/like/artikel/" + this.id_artikel + "/" + this.id_author
@@ -100,13 +100,13 @@ export default {
     Bookmark: function() {
       if (this.bookmark == true) {
         axios
-          .get("/public/deletefavorite/" + this.id_favorite)
+          .get("/deletefavorite/" + this.id_favorite)
           .then(console.log("/favorite/artikel/" + this.id_favorite));
 
         this.bookmark = false;
       } else {
         axios
-          .get("/public/favorite/artikel/" + this.id_artikel)
+          .get("/favorite/artikel/" + this.id_artikel)
           .then(console.log("/favorite/artikel/" + this.id_artikel));
 
         this.bookmark = true;

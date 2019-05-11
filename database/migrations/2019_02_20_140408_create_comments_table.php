@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->string('isi_comment');
             $table->string('author_id');
             $table->string('author');
+            $table->string('member');
             $table->string('artikel_slug');
             $table->timestamps();
         });

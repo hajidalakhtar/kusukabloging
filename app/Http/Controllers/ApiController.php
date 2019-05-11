@@ -27,10 +27,31 @@ class ApiController extends Controller
             $followCount  = 2;
             $blog = Blog::where('author_id',$id_user)->get();
             $userdetails = User::where('provider_id',$id)->get();
-          return ['blog'=> $blog,'user'=>$userdetails,'followCount'=>$followCount,'like_count'=>$like_count,'follow_count'=> $follow_count];
-
-            // return view('User.profile',['blog1'=> $blog,'user'=>$userdetails,'like_count'=>$like_count,'follow_count'=> $follow_count]);
-
+            return ['blog'=> $blog,'user'=>$userdetails,'followCount'=>$followCount,'like_count'=>$like_count,'follow_count'=> $follow_count];
      
+    }
+      public function indonesia()
+    {
+        $blog = Blog::where('category','Indonesia')->get();
+        return $blog;
+
+    }
+        public function dev()
+    {
+        $blog = Blog::where('category','Dev')->get();
+        return $blog;
+
+    }
+        public function bebas()
+    {
+        $blog = Blog::where('category','Bebas')->get();
+        return $blog;
+
+    }
+        public function cerita()
+    {
+        $blog = Blog::where('category','Cerita')->get();
+        return $blog;
+
     }
 }

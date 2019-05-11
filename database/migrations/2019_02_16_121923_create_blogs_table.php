@@ -17,12 +17,12 @@ class CreateBlogsTable extends Migration
             $table->increments('id');
             $table->string('author');
             $table->integer('author_id');
-            $table->integer('company_id');
             $table->string('title');
             $table->string('category');
             $table->string('thumbnail');
             $table->string('isi',10000);
             $table->string('slug');
+            $table->integer('themes');
             $table->timestamps();
         });
     }
