@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Blog;
 use App\favorite;
 use Auth;
+use App\User;
+use App\Transaksi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -51,6 +53,15 @@ class HomeController extends Controller
         $blog = Blog::where('category','Cerita')->get();
         return view('home',['blog'=>$blog]);
 
+    }
+
+    // Admin
+      public function adminHome()
+    {
+      $blog = Blog::all();
+      $user = User::all();
+      $transaksi = Transaksi::whereNotNull('foto')->get();
+      return view('admin.home',['user'=>$user,'blog'=>$blog,'transaksi'=>$transaksi]);
     }
     
 }

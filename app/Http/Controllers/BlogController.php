@@ -5,13 +5,13 @@ use App\Blog;
 use Auth;
 use App\User;
 use App\like;
+use Illuminate\Support\Str;
 use App\favorite;
 use App\comment;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-
     public function details($id,$slug)
     {
 
@@ -58,9 +58,7 @@ class BlogController extends Controller
     {
         $comment = new Comment;
         if (Auth::user() == null) {
-            $comment->author = 'Guest';
-            $comment->author_id = 6;
-            $comment->members = 'Guest';
+            return redirect(Route('login'));
             
         } else {
             $comment->author = Auth::user()->name;
@@ -76,6 +74,29 @@ class BlogController extends Controller
 
     }
 
+   public function Create()
+    {
+     return view('User.userCreate');   
 
+    }
+     public function Store(Request $request)
+    {
+        $blog = new Blog;
+        $blog->author = Auth::user()->name;
+        $blog->author_id = Auth::user()->id;
+        $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
+        $blog->category = $request->category;
+        // $blog->isi = $request->mytextarea;
+        $blog->isi = $request->mytextarea;
+        $blog->themes = $request->themes;
+        $file = $request->file('img');
+        $ext = $file->getClientOriginalExtension();
+        $newName = rand(100000,1001238912).".".$ext;
+        $file->move('image',$newName);
+        $blog->thumbnail = $newName;
+        $blog->save();
+        return redirect(Route('myprofile',[Auth::user()->provider_id,Auth::user()->id]));
+    }
 
 }

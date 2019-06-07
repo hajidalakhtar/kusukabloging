@@ -23,8 +23,8 @@
           <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$data->id_transaksi}}</td>
-            <td>{{$data->getName()}}</td>
-            <td>{{$data->getEmail()  }}</td>
+            <td>{{$data->userData->name}}</td>
+            <td>{{$data->userData->email}}</td>
             <td><img src="{{asset('img/'.$data->foto)}}" alt="Sal" width="100px"></td>
             <td><a href="{{Route('terimaPro',$data->id_transaksi)}}" class="btn btn-success">Setujui</a> <a href=""
                 class="btn btn-danger">Tolak</a></td>

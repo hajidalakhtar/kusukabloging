@@ -11,13 +11,7 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function home()
-    {
-      $blog = Blog::all();
-      $user = User::all();
-      $transaksi = Transaksi::whereNotNull('foto')->get();
-      return view('admin.home',['user'=>$user,'blog'=>$blog,'transaksi'=>$transaksi]);
-    }
+  
     public function deleteUser($id)
     {
         $user = User::find($id);

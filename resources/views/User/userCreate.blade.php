@@ -27,13 +27,21 @@
                 <label for="themes">themes</label>
                 <select name="themes" id="" class="form-control">
                     <option value="1">Default</option>
+                    @if (Auth::user()->members == "Pro")
                     <option value="2">Pro</option>
+                    @else
+                    @endif
                 </select>
+
+
                 <label for="">Isi Artikel</label>
 
                 <div id="mytextarea">
-                </div>
 
+                </div>
+                {{-- <textarea name="isi" id="" cols="30" rows="10" class="form-control">
+
+                </textarea> --}}
                 <br>
                 <label for="">Thumbail</label> <br>
                 <input type="file" name="img"> <br>

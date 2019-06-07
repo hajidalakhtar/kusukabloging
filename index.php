@@ -18,4 +18,16 @@ if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
     return false;
 }
 
+//Original path
+require __DIR__.'/../bootstrap/autoload.php';
+
+//Modified path
+require __DIR__ . '/../kusukabloging-github/bootstrap/autoload.php';
+
+//Original path
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+//Modified path: 2 levels up 
+$app = require_once __DIR__ . '/../kusukabloging-github/bootstrap/app.php';
+
 require_once __DIR__.'/public/index.php';
