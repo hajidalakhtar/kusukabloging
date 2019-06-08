@@ -91,10 +91,10 @@ Route::get('/terimaPro/{kode}','AdminController@terimaPro')->name('terimaPro');
 | Semua Route untuk Api
 |
 */
-Route::get('/userid', 'UserController@userId');
-Route::get('/api/d/{id}/{slug}','ApiController@details' )->name('api.details');
+Route::get('/userid', 'ApiController@userId');
+Route::get('/api/d/{id}','ApiController@details' )->name('api.details');
+Route::get('/api/blog/all','ApiController@allBlog' )->name('api.allBlog');
 Route::get('/api/profile/{id}/{user}', 'ApiController@Profile')->name('api.myprofile');
-
 Route::get('/api/indonesia', 'ApiController@indonesia')->name('api.indonesia');
 Route::get('/api/bebas', 'ApiController@bebas')->name('api.bebas');
 Route::get('/api/cerita', 'ApiController@cerita')->name('api.cerita');

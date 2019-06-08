@@ -14,10 +14,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function userId()
-    {
-        return Auth::user()->id;
-    }
+   
 
     public function Profile($id,$id_user)
     {

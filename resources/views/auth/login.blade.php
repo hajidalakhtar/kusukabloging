@@ -2,14 +2,14 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
 
                 <div class="card-body">
-                    <h1 class="text-center mb-5">KusukaBlonging</h1>
+                    <h1 class="text-center mb-4 mt-4" style="font-family: 'Anton', sans-serif;">KusukaBlonging</h1>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <div class="container" style="width:70%;">
+                        <div class="container" style="width:90%;">
 
                             <div class="form-group row">
                                 <label for="email"
@@ -52,7 +52,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-                                <a href="{{ url('/auth/google') }}" class="btn btn-github"><i
+                                <a href="{{ url('/auth/google') }}" class="btn btn-danger"><i
                                         class="fab fa-google-plus-g"></i> Google</a> @if(Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
