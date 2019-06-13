@@ -8,12 +8,14 @@ use App\like;
 use Illuminate\Support\Str;
 use App\favorite;
 use App\comment;
+use App\Setiting;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
     public function details($id,$slug)
     {
+        $setiting = Setiting::first();
 
         if (Auth::user() == null) {
         $like_count =like::where('id_blog',$id)->count();
@@ -23,12 +25,14 @@ class BlogController extends Controller
         $themes = $blog[0]->themes;
         
         if ($themes == 1) {
-            return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members]);
+            return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members,'setting'=>$setiting]);
         }else {
-            return view('detailsArtikel_1', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members]);
+            return view('detailsArtikel_1', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members,'setting'=>$setiting]);
             
         }
     } else {
+        $setiting = Setiting::first();
+
         $like_count =like::where('id_blog',$id)->count();
         $favoriteCount  = favorite::where('blog_id',$id)->where('id_user', Auth::user()->id)->count();
         $likeCount  = like::where('id_blog',$id)->where('id_user', Auth::user()->id)->count();
@@ -38,9 +42,9 @@ class BlogController extends Controller
         $themes = $blog[0]->themes;
         
         if ($themes == 1) {
-            return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members]);
+            return view('detailsArtikel', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members,'setting'=>$setiting]);
         }else {
-            return view('detailsArtikel_1', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members]);
+            return view('detailsArtikel_1', ['blog'=>$blog,'comment'=>$id,'like_count'=>$like_count,'member'=>$member->members,'setting'=>$setiting]);
             
         }
         }
@@ -49,6 +53,7 @@ class BlogController extends Controller
     }
     public function delete($id)
     {
+        
         $blog = Blog::destroy($id);
         return redirect(Route('myprofile',[Auth::user()->provider_id,Auth::user()->id]));
 
@@ -76,7 +81,8 @@ class BlogController extends Controller
 
    public function Create()
     {
-     return view('User.userCreate');   
+        $setiting = Setiting::first();
+     return view('User.userCreate',['setting'=> $setiting]);   
 
     }
      public function Store(Request $request)

@@ -1,10 +1,9 @@
-@extends('layouts.app')
-
+@extends('layouts.app',['title'=>$setting->app_name,'copyright'=>$setting->copyright,'deskripsi'=>$setting->deskripsi])
 @section('content')
 <div class="container mt-4">
   <div class="card">
     <div class="card-body">
-      <h1>USER</h1>
+      <h1>Transaksi</h1>
       <table class="table mt-4">
         <thead>
           <tr>

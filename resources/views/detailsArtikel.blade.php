@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>$setting->app_name,'copyright'=>$setting->copyright,'deskripsi'=>$setting->deskripsi])
 @section('content')
 
 {{-- <script src='https://cloud.tinymce.com/5/tinymce.min.js?apiKey=xq47pkcma5pd50cj6jpn1bhnmqshtwc6s9m95uagz0untgg3'></script>
@@ -113,7 +113,7 @@
     <br>
 
     @if (count($comment) >= 1) @foreach ($comment as $data)
-    <div class='container' style="width:100%;">
+    {{-- <div class='container' style="width:100%;">
         <div class="media comment-box">
 
             <div class="media-body" style="word-wrap: break-word; width:100%;">
@@ -122,34 +122,47 @@
                     <a href="author.html">
                         @if ($data->poto_profile() === 'default.png')
                         <img class="rounded" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
-                        @else
-                        <img class="rounded" src="{{$data->poto_profile()}}" alt="Sal" width="100px;">
-
-                        @endif
-
-                    </a> {{$data->author}}
-                    {{-- {{dd($data)}} --}}
-                    {{-- {{$data->member}} --}}
-                    @if ($data->member == 'Pro')
-                    <img src="{{asset('image/star.svg')}}" alt="" style="width: 3%;" class="mb-1">
-                    @else
-
-                    @endif
-                    <br>
-
-                </h4>
-                <h4 class="pt-3 pb-3">{{$data->isi_comment}}</h4>
-
-            </div>
-        </div>
-    </div>
-    @endforeach
-    <div class="mt-3">
-        {{ $comment->links() }}
-    </div>
     @else
-    <h1 class="text-center mt-5">Tidak Ada Comment</h1>
+    <img class="rounded" src="{{$data->poto_profile()}}" alt="Sal" width="100px;">
 
     @endif
+
+    </a> {{$data->author}}
+
+    @if ($data->member == 'Pro')
+    <img src="{{asset('image/star.svg')}}" alt="" style="width: 3%;" class="mb-1">
+    @else
+
+    @endif
+    <br>
+
+    </h4>
+    <h4 class="pt-3 pb-3">{{$data->isi_comment}}</h4>
+
+</div>
+</div>
+</div> --}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            @if ($data->poto_profile() === 'default.png')
+            <img class="rounded" src="/storage/profile/{{$blog->poto_profile()}}" alt="Sal">
+            @else
+            <img class="rounded" src="{{$data->poto_profile()}}" alt="Sal" width="100px;">
+
+            @endif
+        </div>
+    </div>
+</div>
+
+@endforeach
+<div class="mt-3">
+    {{ $comment->links() }}
+</div>
+@else
+<h1 class="text-center mt-5">Tidak Ada Comment</h1>
+
+@endif
 </div>
 @endsection

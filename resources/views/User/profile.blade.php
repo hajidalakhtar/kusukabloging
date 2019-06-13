@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>$setting->app_name,'copyright'=>$setting->copyright,'deskripsi'=>$setting->deskripsi])
 @section('content') @foreach ($user as $user)
 <div class="container mt-2">
     <div class="row justify-content-center">

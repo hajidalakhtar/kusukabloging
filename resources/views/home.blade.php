@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>$setting->app_name,'copyright'=>$setting->copyright,'deskripsi'=>$setting->deskripsi])
 @section('content')
 <div class="container">
 	<div class="mainheading">
@@ -21,7 +21,7 @@
 					<ul class="" style="margin-top:-8px; ">
 						<!-- Authentication Links -->
 						@guest
-						<a class="nav-link text-dark" style="padding:9px;"
+						<a class="nav-link text-dark" style="padding:8px;"
 							href="{{ route('login') }}">{{ __('Login') }}</a>
 
 						{{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}

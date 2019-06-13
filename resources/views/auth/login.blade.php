@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>$setting->app_name,'copyright'=>$setting->copyright,'deskripsi'=>$setting->deskripsi])@extends('layouts.app',['title'=>$setting->app_name,'copyright'=>$setting->copyright,'deskripsi'=>$setting->deskripsi])
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -6,7 +6,8 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h1 class="text-center mb-4 mt-4" style="font-family: 'Anton', sans-serif;">KusukaBlonging</h1>
+                    <h1 class="text-center mb-4 mt-4" style="font-family: 'Anton', sans-serif;">{{$setting->app_name}}
+                    </h1>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="container" style="width:90%;">
@@ -35,7 +36,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="offset-1">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                         {{ old( 'remember') ? 'checked' : '' }}>
@@ -47,18 +48,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-                                <a href="{{ url('/auth/google') }}" class="btn btn-danger"><i
-                                        class="fab fa-google-plus-g"></i> Google</a> @if(Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a> @endif
-                            </div>
+                        <div class="form-group text-center ">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Login') }}
+                            </button>
+                            <a href="{{ url('/auth/google') }}" class="btn btn-danger"><i
+                                    class="fab fa-google-plus-g"></i> Google</a> @if(Route::has('password.request'))
+
+                            @endif
                         </div>
+                        <a class="btn btn-link" href="{{ Route('register')}}">
+                            {{ __('Register') }}
+                        </a>
                     </form>
                 </div>
             </div>

@@ -7,6 +7,7 @@ use Auth;
 use App\Transaksi;
 use App\User;
 use App\Blog;
+use App\Setiting;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -32,8 +33,9 @@ class AdminController extends Controller
     }
     public function edit($id)
     {
+        $setiting = Setiting::first();
         $blog =  Blog::find($id);
-        return view('User.userEdit', ['blog'=>$blog]);
+        return view('User.userEdit', ['blog'=>$blog,'setting'=>$setiting]);
     }
     public function upload(Request $request ,$id)
     {

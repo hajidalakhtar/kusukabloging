@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Admin;
+use App\Setiting;
 use Illuminate\Http\Request;
 
 class AdminLoginController extends Controller
 {
     public function showLoginForm()
     {
-      return view('admin.login');
+      $setiting = Setiting::first();
+      return view('admin.login',['setting'=>$setiting]);
     }
 
     public function login(Request $request)

@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 use App\Transaksi;
 use Auth;
+use App\Setting;
+// 'setting'=>$setiting
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
         public function buymember()
     {
+        // 'setting'=>$setiting
+        $setiting = Setiting::first();
+
         $transaksi = Transaksi::where('user',Auth::user()->id)->first();
         if ($transaksi == null) {
             return view('buymember');
@@ -38,12 +43,16 @@ class TransaksiController extends Controller
     }
     public function formBuy($kode)
     {
+        $setiting = Setiting::first();
+
         $transaksi = Transaksi::where('id_transaksi',$kode)->first();
         return view('formbelipro',['kode'=> $transaksi->id_transaksi]);
 
     }
     public function uploadBukti(Request $req, $kode)
     {
+        $setiting = Setiting::first();
+
         $transaksi = Transaksi::where('id_transaksi',$kode)->first();
         $file = $req->file('file');
         $ext = $file->getClientOriginalExtension();

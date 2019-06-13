@@ -8,9 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Kusuka Bloging</title>
+    <title>{{$title}}</title>
 
     <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -135,9 +137,8 @@
         <nav class="navbar navbar-expand-md navbar-light  navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h1 style="font-family: 'Anton', sans-serif;"> KusukaBloging</h1>
+                    <h1 style="font-family: 'Anton', sans-serif;"> {{$title}}</h1>
                 </a>
-
 
 
             </div>
@@ -152,14 +153,11 @@
                 <div class="row row-30">
                     <div class="col-md-4 col-xl-5">
                         <div class="pr-xl-4"><a class="brand text-dark h2 " href="{{Route('home')}}"
-                                style="text-decoration:none">Kusuka Bloging</a>
-                            <p class="mt-3">KusukaBloging Adalah Sebuah website untuk anda membaca berbagai macam
-                                artikel,Blog,novel,dan
-                                karya tulis lain nya </p>
+                                style="text-decoration:none">{{$title}}
+                            </a>
+                            <p class="mt-3">{!!$deskripsi!!}</p>
                             <!-- Rights-->
-                            <p class="rights"><span>©  </span><span
-                                    class="copyright-year">2019</span><span> </span><span>Made With &nbsp; <b> <i
-                                            class="fab fa-laravel"></i></b> &nbsp; By Hajid Al Akhtar</span></p>
+                            <p>{!! $copyright !!}</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -189,4 +187,5 @@
     </div>
 </body>
 
+ 
 </html>

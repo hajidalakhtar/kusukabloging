@@ -43,6 +43,10 @@ Route::get('/indonesia', 'HomeController@indonesia')->name('indonesia');
 Route::get('/bebas', 'HomeController@bebas')->name('bebas');
 Route::get('/cerita', 'HomeController@cerita')->name('cerita');
 Route::get('/dev', 'HomeController@dev')->name('dev');
+Route::get('/setting', 'HomeController@settingApp')->name('settingApp');
+Route::get('/submitSetting', 'SetitingController@submitSetting')->name('submitSetting');
+
+
 
 
 /*

@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.app',['title'=>$setting->app_name,'copyright'=>$setting->copyright,'deskripsi'=>$setting->deskripsi])
+
 
 
 @section('content')
