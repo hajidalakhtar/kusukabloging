@@ -9,10 +9,38 @@ use Illuminate\Support\Str;
 use App\favorite;
 use App\comment;
 use App\Setiting;
+use App\draft;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public function draft(Request $req)
+    {
+        
+        $user = draft::where('user_id',Auth::user()->id)->count();
+
+        if ($user >= 1 ) {
+        $draft = draft::where('user_id',Auth::user()->id)->first();
+        $draft->title = $req->title;
+        $draft->isi = $req->isi;
+        $draft->user_id = Auth::user()->id;
+        $draft->save();
+        return "update";
+        }
+        $draft = new draft;
+        $draft->title = $req->title;
+        $draft->isi = $req->isi;
+        $draft->user_id = Auth::user()->id;
+        $draft->save();
+        return "bisa";
+
+        
+    }
+    public function cekDraft()
+    {
+        $draft = draft::where('user_id',Auth::user()->id)->first();
+        return $draft;
+    }
     public function details($id,$slug)
     {
         $setiting = Setiting::first();
@@ -79,22 +107,22 @@ class BlogController extends Controller
 
     }
 
-   public function Create()
+   public function Create(Request $req)
     {
         $setiting = Setiting::first();
-     return view('User.userCreate',['setting'=> $setiting]);   
+        return view('User.userCreate',['setting'=> $setiting,'title'=>$req->title,'isi'=>$req->isi]);   
 
     }
      public function Store(Request $request)
     {
+        $draft = draft::where('user_id',Auth::user()->id)->first();
         $blog = new Blog;
         $blog->author = Auth::user()->name;
         $blog->author_id = Auth::user()->id;
-        $blog->title = $request->title;
-        $blog->slug = Str::slug($request->title);
+        $blog->title = $draft->title;
+        $blog->slug = Str::slug($draft->title);
         $blog->category = $request->category;
-        // $blog->isi = $request->mytextarea;
-        $blog->isi = $request->mytextarea;
+        $blog->isi =  $draft->isi;
         $blog->themes = $request->themes;
         $file = $request->file('img');
         $ext = $file->getClientOriginalExtension();
@@ -102,6 +130,7 @@ class BlogController extends Controller
         $file->move('image',$newName);
         $blog->thumbnail = $newName;
         $blog->save();
+        $draft->delete();
         return redirect(Route('myprofile',[Auth::user()->provider_id,Auth::user()->id]));
     }
 

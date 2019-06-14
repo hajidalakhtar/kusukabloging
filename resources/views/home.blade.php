@@ -41,7 +41,7 @@
 								<a href="{{Route('buymember')}}" class="dropdown-item">Buy Member</a>
 
 								@endif
-								<a href="{{Route('Create')}}" class="dropdown-item">Create Artikel</a>
+								<a href="{{Route('textEditor')}}" class="dropdown-item">Create Artikel</a>
 								<a href="{{Route('myfollow')}}" class="dropdown-item">My Follow</a>
 								<a href="{{Route('Myfavorite')}}" class="dropdown-item">My Favorite</a>
 								<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

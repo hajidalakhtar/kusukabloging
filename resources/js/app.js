@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -22,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('details-post', require('./components/DetailsPost.vue').default);
+Vue.component('text-editor', require('./components/TextEditor.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

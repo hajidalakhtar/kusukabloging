@@ -22,5 +22,8 @@
         "sass-loader": "^7.1.0",
         "vue": "^2.6.10",
         "vue-template-compiler": "^2.6.9"
+    },
+    "dependencies": {
+        "vue2-medium-editor": "^1.1.6"
     }
 }

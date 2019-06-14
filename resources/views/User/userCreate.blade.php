@@ -6,16 +6,17 @@
     selector: '#mytextarea',
   
   }); --}}
-    <!-- medium editor -->
+<!-- medium editor -->
+<script src="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/js/medium-editor.min.js" type="application/javascript">
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@5.23.2/dist/css/medium-editor.min.css" type="text/css"
+    media="screen" charset="utf-8">
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <form action="{{Route('store')}}" method="Post" enctype="multipart/form-data">
                 @csrf
-                <label for="">Title</label>
-                <input type="text" name="title" class="form-control">
-
                 <label for="category">Category</label>
                 <select name="category" id="" class="form-control">
                     <option value="Dev">Dev</option>
@@ -33,11 +34,8 @@
                 </select>
 
 
-                <label for="">Isi Artikel</label>
 
-             <div class="editable"></div>
-   
-                <br>
+
                 <label for="">Thumbail</label> <br>
                 <input type="file" name="img"> <br>
                 <input type="submit" name="" id="" class="btn btn-primary mt-4">
@@ -46,5 +44,5 @@
         </div>
     </div>
 </div>
- 
+
 @endsection

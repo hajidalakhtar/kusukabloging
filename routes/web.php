@@ -57,18 +57,21 @@ Route::get('/submitSetting', 'SetitingController@submitSetting')->name('submitSe
 |
 */
 Route::get('/profile/{id}/{user}', 'UserController@Profile')->name('myprofile');
-Route::get('/create', 'BlogController@Create')->name('Create');
-Route::post('/store', 'BlogController@Store')->name('store');
-Route::get('/delete/{id}', 'BlogController@delete')->name('delete');
-Route::get('/edit/profile/{id}', 'UserController@editProfile')->name('editprofile');
-Route::post('/update/profile/{id}', 'UserController@update')->name('update');
-Route::get('/favorite/artikel/{id_artikel}', 'SocialmediaController@favorite')->name('favorite');
-Route::get('/myfavorite', 'UserController@favorite')->name('Myfavorite');
-Route::get('/deletefavorite/{id}', 'SocialmediaController@delete_favorite')->name('deletefavorite');
-Route::get('/follow/create/{id_target}', 'SocialmediaController@follow')->name('follow');
-Route::get('/deletefollow/{id}', 'SocialmediaController@delete_follow')->name('unfollow');
-Route::get('/follow', 'UserController@Follow')->name('myfollow');
-Route::get('/like/artikel/{id_artikel}/{id_author}', 'SocialmediaController@like')->name('like');
+
+Route::get('/texteditor', 'HomeController@textEditor')->middleware('auth:web')->name('textEditor');
+Route::get('/create', 'BlogController@Create')->middleware('auth:web')->name('Create');
+Route::post('/store', 'BlogController@Store')->middleware('auth:web')->name('store');
+Route::post('/draft', 'BlogController@draft')->name('api.draft');
+Route::get('/delete/{id}', 'BlogController@delete')->middleware('auth:web')->name('delete');
+Route::get('/edit/profile/{id}', 'UserController@editProfile')->middleware('auth:web')->name('editprofile');
+Route::post('/update/profile/{id}', 'UserController@update')->middleware('auth:web')->name('update');
+Route::get('/favorite/artikel/{id_artikel}', 'SocialmediaController@favorite')->middleware('auth:web')->name('favorite');
+Route::get('/myfavorite', 'UserController@favorite')->middleware('auth:web')->name('Myfavorite');
+Route::get('/deletefavorite/{id}', 'SocialmediaController@delete_favorite')->middleware('auth:web')->name('deletefavorite');
+Route::get('/follow/create/{id_target}', 'SocialmediaController@follow')->middleware('auth:web')->name('follow');
+Route::get('/deletefollow/{id}', 'SocialmediaController@delete_follow')->middleware('auth:web')->name('unfollow');
+Route::get('/follow', 'UserController@Follow')->middleware('auth:web')->name('myfollow');
+Route::get('/like/artikel/{id_artikel}/{id_author}', 'SocialmediaController@like')->middleware('auth:web')->name('like');
 Route::get('/deletelike/{id}', 'SocialmediaController@delete_like')->name('deletelike');
 
 Route::get('/ceklike/{idUser}/{idBlog}','SocialmediaController@cekLike')->name('cekLike');
@@ -103,6 +106,7 @@ Route::get('/api/indonesia', 'ApiController@indonesia')->name('api.indonesia');
 Route::get('/api/bebas', 'ApiController@bebas')->name('api.bebas');
 Route::get('/api/cerita', 'ApiController@cerita')->name('api.cerita');
 Route::get('/api/dev', 'ApiController@dev')->name('api.dev');
+Route::get('/api/cekDraft', 'BlogController@cekDraft')->name('api.cekDraft');
 
 
 

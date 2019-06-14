@@ -5,6 +5,7 @@ use App\Blog;
 use App\Setiting;
 use App\favorite;
 use Auth;
+use App\draft;
 use App\User;
 use App\Transaksi;
 use Illuminate\Http\Request;
@@ -80,6 +81,12 @@ class HomeController extends Controller
     {
         $setiting = Setiting::first();
         return view('admin.setting', ['setting'=>$setiting]);
+    }
+    public function textEditor()
+    {
+        $setiting = Setiting::first();
+        return view('User.TextEditor', ['setting'=>$setiting]);
+            
     }
     
     
