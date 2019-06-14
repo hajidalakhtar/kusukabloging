@@ -126,258 +126,120 @@
         }
 
         .pace {
-            width: 140px;
-            height: 300px;
-            position: fixed;
-            top: -90px;
-            right: -20px;
-            z-index: 2000;
-            -webkit-transform: scale(0);
-            -moz-transform: scale(0);
-            -ms-transform: scale(0);
-            -o-transform: scale(0);
-            transform: scale(0);
-            opacity: 0;
-            -webkit-transition: all 2s linear 0s;
-            -moz-transition: all 2s linear 0s;
-            transition: all 2s linear 0s;
+            -webkit-pointer-events: none;
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
 
-        .pace.pace-active {
-            -webkit-transform: scale(.25);
-            -moz-transform: scale(.25);
-            -ms-transform: scale(.25);
-            -o-transform: scale(.25);
-            transform: scale(.25);
-            opacity: 1;
-        }
-
-        .pace .pace-activity {
-            width: 140px;
-            height: 140px;
-            border-radius: 70px;
-            background: #1a638d;
-            position: absolute;
-            top: 0;
-            z-index: 1911;
-            -webkit-animation: pace-bounce 1s infinite;
-            -moz-animation: pace-bounce 1s infinite;
-            -o-animation: pace-bounce 1s infinite;
-            -ms-animation: pace-bounce 1s infinite;
-            animation: pace-bounce 1s infinite;
+        .pace-inactive {
+            display: none;
         }
 
         .pace .pace-progress {
-            position: absolute;
+            background: #000000;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 100%;
+            width: 100%;
+            height: 2px;
+        }
+
+        .pace .pace-progress-inner {
             display: block;
-            left: 50%;
-            bottom: 0;
-            z-index: 1910;
-            margin-left: -30px;
-            width: 60px;
-            height: 75px;
-            background: rgba(20, 20, 20, .1);
-            box-shadow: 0 0 20px 35px rgba(20, 20, 20, .1);
-            border-radius: 30px / 40px;
-            -webkit-transform: scaleY(.3) !important;
-            -moz-transform: scaleY(.3) !important;
-            -ms-transform: scaleY(.3) !important;
-            -o-transform: scaleY(.3) !important;
-            transform: scaleY(.3) !important;
-            -webkit-animation: pace-compress .5s infinite alternate;
-            -moz-animation: pace-compress .5s infinite alternate;
-            -o-animation: pace-compress .5s infinite alternate;
-            -ms-animation: pace-compress .5s infinite alternate;
-            animation: pace-compress .5s infinite alternate;
+            position: absolute;
+            right: 0px;
+            width: 100px;
+            height: 100%;
+            box-shadow: 0 0 10px #000000, 0 0 5px #000000;
+            opacity: 1.0;
+            -webkit-transform: rotate(3deg) translate(0px, -4px);
+            -moz-transform: rotate(3deg) translate(0px, -4px);
+            -ms-transform: rotate(3deg) translate(0px, -4px);
+            -o-transform: rotate(3deg) translate(0px, -4px);
+            transform: rotate(3deg) translate(0px, -4px);
         }
 
-        @-webkit-keyframes pace-bounce {
+        .pace .pace-activity {
+            display: block;
+            position: fixed;
+            z-index: 2000;
+            top: 15px;
+            right: 15px;
+            width: 14px;
+            height: 14px;
+            border: solid 2px transparent;
+            border-top-color: #000000;
+            border-left-color: #000000;
+            border-radius: 10px;
+            -webkit-animation: pace-spinner 400ms linear infinite;
+            -moz-animation: pace-spinner 400ms linear infinite;
+            -ms-animation: pace-spinner 400ms linear infinite;
+            -o-animation: pace-spinner 400ms linear infinite;
+            animation: pace-spinner 400ms linear infinite;
+        }
+
+        @-webkit-keyframes pace-spinner {
             0% {
-                top: 0;
-                -webkit-animation-timing-function: ease-in;
-            }
-
-            40% {}
-
-            50% {
-                top: 140px;
-                height: 140px;
-                -webkit-animation-timing-function: ease-out;
-            }
-
-            55% {
-                top: 160px;
-                height: 120px;
-                border-radius: 70px / 60px;
-                -webkit-animation-timing-function: ease-in;
-            }
-
-            65% {
-                top: 120px;
-                height: 140px;
-                border-radius: 70px;
-                -webkit-animation-timing-function: ease-out;
-            }
-
-            95% {
-                top: 0;
-                -webkit-animation-timing-function: ease-in;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
             }
 
             100% {
-                top: 0;
-                -webkit-animation-timing-function: ease-in;
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
             }
         }
 
-        @-moz-keyframes pace-bounce {
+        @-moz-keyframes pace-spinner {
             0% {
-                top: 0;
-                -moz-animation-timing-function: ease-in;
-            }
-
-            40% {}
-
-            50% {
-                top: 140px;
-                height: 140px;
-                -moz-animation-timing-function: ease-out;
-            }
-
-            55% {
-                top: 160px;
-                height: 120px;
-                border-radius: 70px / 60px;
-                -moz-animation-timing-function: ease-in;
-            }
-
-            65% {
-                top: 120px;
-                height: 140px;
-                border-radius: 70px;
-                -moz-animation-timing-function: ease-out;
-            }
-
-            95% {
-                top: 0;
-                -moz-animation-timing-function: ease-in;
+                -moz-transform: rotate(0deg);
+                transform: rotate(0deg);
             }
 
             100% {
-                top: 0;
-                -moz-animation-timing-function: ease-in;
+                -moz-transform: rotate(360deg);
+                transform: rotate(360deg);
             }
         }
 
-        @keyframes pace-bounce {
+        @-o-keyframes pace-spinner {
             0% {
-                top: 0;
-                animation-timing-function: ease-in;
-            }
-
-            50% {
-                top: 140px;
-                height: 140px;
-                animation-timing-function: ease-out;
-            }
-
-            55% {
-                top: 160px;
-                height: 120px;
-                border-radius: 70px / 60px;
-                animation-timing-function: ease-in;
-            }
-
-            65% {
-                top: 120px;
-                height: 140px;
-                border-radius: 70px;
-                animation-timing-function: ease-out;
-            }
-
-            95% {
-                top: 0;
-                animation-timing-function: ease-in;
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
             }
 
             100% {
-                top: 0;
-                animation-timing-function: ease-in;
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
             }
         }
 
-        @-webkit-keyframes pace-compress {
+        @-ms-keyframes pace-spinner {
             0% {
-                bottom: 0;
-                margin-left: -30px;
-                width: 60px;
-                height: 75px;
-                background: rgba(20, 20, 20, .1);
-                box-shadow: 0 0 20px 35px rgba(20, 20, 20, .1);
-                border-radius: 30px / 40px;
-                -webkit-animation-timing-function: ease-in;
+                -ms-transform: rotate(0deg);
+                transform: rotate(0deg);
             }
 
             100% {
-                bottom: 30px;
-                margin-left: -10px;
-                width: 20px;
-                height: 5px;
-                background: rgba(20, 20, 20, .3);
-                box-shadow: 0 0 20px 35px rgba(20, 20, 20, .3);
-                border-radius: 20px / 20px;
-                -webkit-animation-timing-function: ease-out;
+                -ms-transform: rotate(360deg);
+                transform: rotate(360deg);
             }
         }
 
-        @-moz-keyframes pace-compress {
+        @keyframes pace-spinner {
             0% {
-                bottom: 0;
-                margin-left: -30px;
-                width: 60px;
-                height: 75px;
-                background: rgba(20, 20, 20, .1);
-                box-shadow: 0 0 20px 35px rgba(20, 20, 20, .1);
-                border-radius: 30px / 40px;
-                -moz-animation-timing-function: ease-in;
+                transform: rotate(0deg);
+                transform: rotate(0deg);
             }
 
             100% {
-                bottom: 30px;
-                margin-left: -10px;
-                width: 20px;
-                height: 5px;
-                background: rgba(20, 20, 20, .3);
-                box-shadow: 0 0 20px 35px rgba(20, 20, 20, .3);
-                border-radius: 20px / 20px;
-                -moz-animation-timing-function: ease-out;
+                transform: rotate(360deg);
+                transform: rotate(360deg);
             }
         }
-
-        @keyframes pace-compress {
-            0% {
-                bottom: 0;
-                margin-left: -30px;
-                width: 60px;
-                height: 75px;
-                background: rgba(20, 20, 20, .1);
-                box-shadow: 0 0 20px 35px rgba(20, 20, 20, .1);
-                border-radius: 30px / 40px;
-                animation-timing-function: ease-in;
-            }
-
-            100% {
-                bottom: 30px;
-                margin-left: -10px;
-                width: 20px;
-                height: 5px;
-                background: rgba(20, 20, 20, .3);
-                box-shadow: 0 0 20px 35px rgba(20, 20, 20, .3);
-                border-radius: 20px / 20px;
-                animation-timing-function: ease-out;
-            }
-        }
-
 
         @media (max-width: 1024px) {
             .img-rp {

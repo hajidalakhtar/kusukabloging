@@ -51,7 +51,7 @@
         <div class="col-md-8 col-md-offset-2 col-xs-12">
             <div class="mainheading">
 
-                <h1 class="posttitle text-center" style=";border-bottom:1px solid black; padding-bottom:20px;">
+                <h1 class="posttitle text-center" style=" padding-bottom:20px;">
                     {{$blog->title}}
                 </h1>
             </div>

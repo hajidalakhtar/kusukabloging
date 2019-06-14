@@ -1939,7 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
 var options = {
   toolbar: {
     allowMultiParagraphSelection: true,
-    buttons: ["bold", "italic", "underline", "h1", "h3", "justifyLeft", "justifyCenter", "justifyRight", "quote", "anchor", "image"],
+    buttons: ["bold", "italic", "underline", "h1", "h3", "justifyLeft", "justifyCenter", "justifyRight", "quote", "anchor", "image", "outdent"],
     diffLeft: 0,
     diffTop: -10,
     firstButtonClass: "medium-editor-button-first",
@@ -1957,23 +1957,20 @@ var options = {
     return {
       text: "",
       title: null,
-      options: options,
-      tes: null
+      options: options
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.get("/api/cekDraft").then(function (response) {
-      console.log(response);
+      var data = response.data;
+      console.log(data);
 
-      if (response.data = " ") {
-        _this.text = "";
-        _this.title = null;
-      } else {
+      if (response.data.isi != null) {
         _this.text = response.data.isi;
         _this.title = response.data.title;
-      }
+      } else {}
     }); // axios.get("/api/cekDraft").then(function(data) {
     //   var tes = data.data.isi;
     //   console.log(this.text);

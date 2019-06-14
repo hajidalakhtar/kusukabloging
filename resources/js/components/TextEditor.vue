@@ -40,7 +40,8 @@ var options = {
       "justifyRight",
       "quote",
       "anchor",
-      "image"
+      "image",
+      "outdent"
     ],
     diffLeft: 0,
     diffTop: -10,
@@ -59,19 +60,17 @@ export default {
     return {
       text: "",
       title: null,
-      options: options,
-      tes: null
+      options: options
     };
   },
   mounted() {
     axios.get("/api/cekDraft").then(response => {
-      console.log(response);
-      if ((response.data = " ")) {
-        this.text = "";
-        this.title = null;
-      } else {
+      var data = response.data;
+      console.log(data);
+      if (response.data.isi != null) {
         this.text = response.data.isi;
         this.title = response.data.title;
+      } else {
       }
     });
 

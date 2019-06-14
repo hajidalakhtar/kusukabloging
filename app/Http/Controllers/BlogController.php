@@ -109,6 +109,11 @@ class BlogController extends Controller
 
    public function Create(Request $req)
     {
+            $draft = new draft;
+            $draft->title = $req->title;
+            $draft->isi = $req->isi;
+            $draft->user_id = Auth::user()->id;
+            $draft->save();
         $setiting = Setiting::first();
         return view('User.userCreate',['setting'=> $setiting,'title'=>$req->title,'isi'=>$req->isi]);   
 
