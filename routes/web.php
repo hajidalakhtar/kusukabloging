@@ -62,6 +62,8 @@ Route::get('/texteditor', 'HomeController@textEditor')->middleware('auth:web')->
 Route::get('/create', 'BlogController@Create')->middleware('auth:web')->name('Create');
 Route::post('/store', 'BlogController@Store')->middleware('auth:web')->name('store');
 Route::post('/draft', 'BlogController@draft')->name('api.draft');
+Route::get('/removeDraft', 'BlogController@removeDraft')->name('api.removeDraft');
+
 Route::get('/delete/{id}', 'BlogController@delete')->middleware('auth:web')->name('delete');
 Route::get('/edit/profile/{id}', 'UserController@editProfile')->middleware('auth:web')->name('editprofile');
 Route::post('/update/profile/{id}', 'UserController@update')->middleware('auth:web')->name('update');

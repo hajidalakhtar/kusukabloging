@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="mt-4 float-right">
+      <button class="text-center btn" style="font-size:20px;" v-on:click="removeDraft">
+        <i class="fas fa-trash"></i>
+      </button>
       <button class="text-center btn" style="font-size:20px;" v-on:click="saveDraft">
         <i class="far fa-save"></i>
       </button>
@@ -13,19 +16,21 @@
       </a>
     </div>
     <input type="text" v-model="title" class="mt-4 title" placeholder="Title">
+
     <hr>
     <medium-editor
+      style="outline: none;"
       :text="text"
       v-on:edit="processEditOperation"
       :options="options"
       custom-tag="div"
-      style="outline: none;"
     ></medium-editor>
   </div>
 </template>
 
 <script>
 import editor from "vue2-medium-editor";
+
 var options = {
   toolbar: {
     allowMultiParagraphSelection: true,
@@ -41,7 +46,8 @@ var options = {
       "quote",
       "anchor",
       "image",
-      "outdent"
+      "html",
+      "removeFormat"
     ],
     diffLeft: 0,
     diffTop: -10,
@@ -84,6 +90,13 @@ export default {
     "medium-editor": editor
   },
   methods: {
+    removeDraft: function() {
+      axios.get("/removeDraft").then(function(data) {
+        console.log(data);
+      });
+      this.title = null;
+      this.text = "";
+    },
     processEditOperation: function(operation) {
       this.text = operation.api.origElements.innerHTML;
     },

@@ -1935,11 +1935,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 var options = {
   toolbar: {
     allowMultiParagraphSelection: true,
-    buttons: ["bold", "italic", "underline", "h1", "h3", "justifyLeft", "justifyCenter", "justifyRight", "quote", "anchor", "image", "outdent"],
+    buttons: ["bold", "italic", "underline", "h1", "h3", "justifyLeft", "justifyCenter", "justifyRight", "quote", "anchor", "image", "html", "removeFormat"],
     diffLeft: 0,
     diffTop: -10,
     firstButtonClass: "medium-editor-button-first",
@@ -1981,6 +1985,13 @@ var options = {
     "medium-editor": vue2_medium_editor__WEBPACK_IMPORTED_MODULE_0___default.a
   },
   methods: {
+    removeDraft: function removeDraft() {
+      axios.get("/removeDraft").then(function (data) {
+        console.log(data);
+      });
+      this.title = null;
+      this.text = "";
+    },
     processEditOperation: function processEditOperation(operation) {
       this.text = operation.api.origElements.innerHTML;
     },
@@ -37200,6 +37211,16 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "mt-4 float-right" }, [
+        _c(
+          "button",
+          {
+            staticClass: "text-center btn",
+            staticStyle: { "font-size": "20px" },
+            on: { click: _vm.removeDraft }
+          },
+          [_c("i", { staticClass: "fas fa-trash" })]
+        ),
+        _vm._v(" "),
         _c(
           "button",
           {

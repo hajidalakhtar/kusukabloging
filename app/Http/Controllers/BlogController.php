@@ -14,6 +14,13 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public function removeDraft()
+    {
+        $user = draft::where('user_id',Auth::user()->id)->first();
+        $user->delete();
+        return "hapus";
+        
+    }
     public function draft(Request $req)
     {
         
